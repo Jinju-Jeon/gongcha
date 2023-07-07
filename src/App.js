@@ -7,8 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './default.scss'
 
 /* Components */
-import Order from "./page/Order";
+import Menu from "./page/Menu";
 import Home from "./page/Home";
+import List from "./component/List";
 
 /* datas */
 import bestData from './data/best'
@@ -43,16 +44,16 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/order" element={<Order/>}>
-          <Route path='new' element={<div>new</div>}></Route>
-          <Route path='best' element={<div>best</div>}></Route>
-          <Route path='milktea' element={<div>milktea</div>}></Route>
-          <Route path='jewelry' element={<div>jewelry</div>}></Route>
-          <Route path='smoothie' element={<div>smoothie</div>}></Route>
-          <Route path='original' element={<div>original</div>}></Route>
-          <Route path='fruit' element={<div>fruit</div>}></Route>
-          <Route path='fruitmix' element={<div>fruitmix</div>}></Route>
-          <Route path='coffee' element={<div>coffee</div>}></Route>
+        <Route path="/Menu" element={<Menu/>}>
+          <Route path="newseason" element={<List list={newseason} />}></Route>
+          <Route path="best" element={<List list={best} />}></Route>
+          <Route path="milktea" element={<List list={milktea} />}></Route>
+          <Route path="jewelry" element={<List list={jewelry} />}></Route>
+          <Route path="smoothie" element={<List list={smoothie} />}></Route>
+          <Route path="original" element={<List list={original} />}></Route>
+          <Route path="fruit" element={<List list={fruit} />}></Route>
+          <Route path="fruitmix" element={<List list={fruitmix} />}></Route>
+          <Route path="coffee" element={<List list={coffee} />}></Route>
         </Route>
       </Routes>
     </div>

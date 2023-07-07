@@ -1,5 +1,5 @@
 @use '/src/default.scss';
-@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChang-Bold.woff2');
+
 
 .Home{
     .carousel{
@@ -46,20 +46,84 @@
             display: block; margin: 15px 20px; padding: 15px 40px;
             font-size: 60px;
             border: 3px dashed #fff;
+            font-family: 'paybooc-Bold';
     
-            svg{margin-left: 20px;}
+            svg{margin-left: 20px; margin-bottom: -5px;}
         }
     }
 }
 
-.Order{
+.Menu{
+    .back{
+        padding-left: 10px;
+        height: 50px; line-height: 50px;
+        font-family: default.$payb;
+        font-size: 1.5rem;
+        background-color: default.$mainC;
+        color: #fff;
+
+        svg{margin-right: 10px;}
+    }
+
     >ul{
         display: flex;
         flex-wrap: wrap;
 
+
         >li{
             width: 20%;
-            font-family: 'PyeongChang-Bold';
+            text-align: center;
+            font-size: 1.75rem;
+            padding: 15px 0;
+            font-family: 'paybooc-Bold';
+            color: default.$sub;
+
+            &.on{
+                color: default.$mainC
+            }
+
+
         }
+    }////ul
+
+    .center{
+        
+
+        .row{
+            flex-wrap: wrap;
+            align-content: flex-start;
+
+        }
+        .col{
+            width: 20%;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+            >div{
+                background-color: #fff;
+                border-radius: 5px;
+                overflow: hidden;
+            }
+            
+        }
+
+        p{
+            font-size: 1.5rem;
+            text-align: center;
+            &.name{
+                height: 4.5rem;
+                color: default.$mainC;
+                font-weight: bold;
+                word-break: keep-all;
+            }
+            &.price{}
+        }
+    }
+
+    .bottom{
+        position: absolute;
+        bottom: 0;
+
+        
+        >div{display: flex;}
     }
 }

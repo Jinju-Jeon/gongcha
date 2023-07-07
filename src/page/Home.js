@@ -23,7 +23,7 @@ export default function Home() {
           <img src={process.env.PUBLIC_URL + '/img/main4.jpg'} alt="2023 대한민국 브랜드 명예의 전당 '프리미엄 티 전문점' 부문 대상 수상 " />
         </Carousel.Item>
       </Carousel>
-      <Link to='/Order'><Button className='intro_btn'><span>주문하기<FontAwesomeIcon icon={faChevronRight} /></span></Button></Link>
+      <Link to='/Menu/newseason'><Button className='intro_btn'><span>주문하기<FontAwesomeIcon icon={faChevronRight} /></span></Button></Link>
     </div>
   )
 }
