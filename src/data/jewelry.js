@@ -1,4 +1,4 @@
-const jewelry = [
+const jewelryData = [
     {
     id : 'jewelry1',
     name : '브라운슈가 쥬얼리 밀크티',
@@ -46,4 +46,4 @@ const jewelry = [
     }
     ]
     
-    export default jewelry
+    export default jewelryData

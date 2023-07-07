@@ -1,4 +1,4 @@
-const original = [
+const originalData = [
     {
     id : 'original1',
     name : '블랙티',
@@ -37,4 +37,4 @@ const original = [
     }
     ]
     
-    export default original
+    export default originalData

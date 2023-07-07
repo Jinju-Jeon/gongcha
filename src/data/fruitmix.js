@@ -1,4 +1,4 @@
-const fruitemix = [
+const fruitemixData = [
     {
     id : 'fruitmix1',
     name : '망고 요구르트',
@@ -37,4 +37,4 @@ const fruitemix = [
     }
     ]
     
-    export default fruitemix
+    export default fruitemixData

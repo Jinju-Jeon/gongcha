@@ -1,4 +1,4 @@
-const smoothie = [
+const smoothieData = [
     {
     id : 'smoothie1',
     name : '딸기 얼그레이 쿠키 스무디',
@@ -109,4 +109,4 @@ const smoothie = [
     }
     ]
     
-    export default smoothie
+    export default smoothieData

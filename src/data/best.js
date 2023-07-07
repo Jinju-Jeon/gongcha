@@ -1,4 +1,4 @@
-const best = [
+const bestData = [
     {
     id : 'best1',
     name : '블랙 밀크티+펄',
@@ -55,4 +55,4 @@ const best = [
     }
     ]
     
-    export default best
+    export default bestData

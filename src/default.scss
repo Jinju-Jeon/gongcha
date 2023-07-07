@@ -1,3 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-*{margin: 0;padding: 0;}
+/* 세팅 */
+*{margin: 0;padding: 0; font-family: 'Noto Sans KR';}
+img{width: 100%; display: block;}
+.App{width: 1080px; height: 1920px; background-color: #eee; position: relative; margin: 0 auto;}
+
+$mainC: #cf3e58;
+
+
+/* 컨텐츠 */
+
+.carousel{
+    .carousel-item{
+        height: 1920px;
+        &.active:nth-child(1){background: #fefad4;}
+        &.active:nth-child(2){background: linear-gradient(90deg,#f2c627,#d9c242,#91a83c);}
+        &.active:nth-child(3){background: #e5dcca;}
+        &.active:nth-child(4){background: #211a14;}
+    }
+    
+    .carousel-control-prev,.carousel-control-next{
+        height: 1202px;
+        
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon{
+            width: 70px;
+            height: 100px;
+            padding: 20px;
+            background-position: center;
+            background-size: 50px 50px;
+            background-color: #000;
+        }
+    }
+    
+        .carousel-indicators{display: none;}
+}
+
+
+
+.intro_btn{
+    
+    position: absolute;
+    left: 50%; bottom: 100px;
+    transform: translateX(-50%);
+    z-index: 9;
+    background-color: $mainC;
+    border: none;
+    
+    &:hover,&:active,:not(&.btn-check)+&.btn:active{
+        background-color: $mainC;
+    }
+
+    span{
+        display: block; margin: 15px 20px; padding: 15px 30px;
+        font-size: 60px;
+        border: 3px dashed #fff;
+    }
+}

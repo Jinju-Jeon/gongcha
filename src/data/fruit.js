@@ -1,4 +1,4 @@
-const fruit = [
+const fruitData = [
     {
     id : 'fruit1',
     name : '자몽 그린티',
@@ -28,4 +28,4 @@ const fruit = [
     }
     ]
     
-    export default fruit
+    export default fruitData
