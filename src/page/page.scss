@@ -1,0 +1,65 @@
+@use '/src/default.scss';
+@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChang-Bold.woff2');
+
+.Home{
+    .carousel{
+        .carousel-item{
+            transition: .3s;
+            height: 1920px;
+            &:nth-child(1){background: #fefad4;}
+            &:nth-child(2){background: linear-gradient(90deg,#f2c627,#d9c242,#91a83c);}
+            &:nth-child(3){background: #e5dcca;}
+            &:nth-child(4){background: #211a14;}
+        }
+        
+        .carousel-control-prev,.carousel-control-next{
+            height: 1202px;
+            
+            .carousel-control-next-icon,
+            .carousel-control-prev-icon{
+                width: 70px;
+                height: 100px;
+                padding: 20px;
+                background-position: center;
+                background-size: 50px 50px;
+                background-color: #000;
+            }
+        }
+        
+            .carousel-indicators{display: none;}
+    }
+    
+    .intro_btn{
+        
+        position: absolute;
+        left: 50%; bottom: 300px;
+        transform: translateX(-50%);
+        z-index: 9;
+        background-color: default.$mainC;
+        border: none;
+        
+        &:hover,&.btn:active,:not(&.btn-check)+&.btn:active,&.btn:focus-visible{
+            background-color: default.$mainActive;
+        }
+    
+        span{
+            display: block; margin: 15px 20px; padding: 15px 40px;
+            font-size: 60px;
+            border: 3px dashed #fff;
+    
+            svg{margin-left: 20px;}
+        }
+    }
+}
+
+.Order{
+    >ul{
+        display: flex;
+        flex-wrap: wrap;
+
+        >li{
+            width: 20%;
+            font-family: 'PyeongChang-Bold';
+        }
+    }
+}
