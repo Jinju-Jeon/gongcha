@@ -1,9 +1,10 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
 
+
 export default function Order() {
   return (
-    <>
+    <div className='Order'>
         <ul>
           <li><Link to='new'>NEW 시즌 메뉴</Link></li>
           <li><Link to='best'>베스트 콤비네이션</Link></li>
@@ -23,6 +24,6 @@ export default function Order() {
         <div>여기에 하단메뉴를 넣기</div>
         
 
-    </>
+    </div>
   )
 }
