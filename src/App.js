@@ -6,10 +6,11 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './default.scss'
 
-/* Components */
+/* Components and Pages */
 import Menu from "./page/Menu";
 import Home from "./page/Home";
 import List from "./component/List";
+import Option from './page/Option'
 
 /* datas */
 import bestData from './data/best'
@@ -44,7 +45,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/Menu" element={<Menu/>}>
+        <Route path="/menu" element={<Menu/>}>
           <Route path="newseason" element={<List list={newseason} />}></Route>
           <Route path="best" element={<List list={best} />}></Route>
           <Route path="milktea" element={<List list={milktea} />}></Route>
@@ -55,6 +56,7 @@ function App() {
           <Route path="fruitmix" element={<List list={fruitmix} />}></Route>
           <Route path="coffee" element={<List list={coffee} />}></Route>
         </Route>
+        <Route path="/option/:id" element={<Option />}/>
       </Routes>
     </div>
   );
