@@ -5,7 +5,8 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import OrderList from '../component/OrderList'
 
 export default function Menu() {
-  const nowPath = useLocation().pathname.replace('/Menu/','')
+  const nowPath = useLocation().pathname.replace('/menu/','')
+
 
   
 

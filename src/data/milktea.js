@@ -5,7 +5,7 @@ const milkteaData = [
     img : "/img/product/milktea1.jpg",
     desc : "달달한 약과를 통째로 갈아 넣어 쫀득하게 씹히는 맛이 일품인 밀크티",
     price : 4900,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0]
     },
     {
@@ -14,7 +14,7 @@ const milkteaData = [
     img : "/img/product/milktea2.jpg",
     desc : "여름철 대표 간식 초당 옥수수에 향긋한 블랙티를 더하여 시원하게 즐기는 밀크티",
     price : 5100,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0]
     },
     {
@@ -23,7 +23,7 @@ const milkteaData = [
     img : "/img/product/milktea3.jpg",
     desc : "진한 향과 맛을 느낄 수 있는 블랙티(홍차)와 밀크의 만남",
     price : 4500,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0,1,2]
     },
     {
@@ -32,7 +32,7 @@ const milkteaData = [
     img : "/img/product/milktea4.jpg",
     desc : "베르가못 향의 얼그레이티(홍차)와 밀크가 부드러운 조화를 이루는 밀크티",
     price : 4500,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0,1,2]
     },
     {
@@ -41,7 +41,7 @@ const milkteaData = [
     img : "/img/product/milktea5.jpg",
     desc : "묵직하고 깊은 향의 우롱차에 밀크가 더해진 우롱밀크티",
     price : 4500,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0,1,2]
     },
     {
@@ -50,7 +50,7 @@ const milkteaData = [
     img : "/img/product/milktea6.jpg",
     desc : "자스민 꽃잎을 함께 우려낸 그린티와 밀크의 조화",
     price : 4500,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0,1,2]
     },
     {
@@ -59,7 +59,7 @@ const milkteaData = [
     img : "/img/product/milktea7.jpg",
     desc : "타로의 고소함과 밀크의 조합",
     price : 4500,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0,1,2]
     },
     {
@@ -68,7 +68,7 @@ const milkteaData = [
     img : "/img/product/milktea8.jpg",
     desc : "부드러운 밀크에 녹아든 진한 초콜렛을 느낄 수 있는 초콜렛 밀크티",
     price : 4500,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [0,1,2]
     },
     {
@@ -77,7 +77,7 @@ const milkteaData = [
     img : "/img/product/milktea9.jpg",
     desc : "그린티를 넣은 달콤하고 고소한 피스타치오 밀크티",
     price : 4900,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [1]
     },
     {
@@ -86,7 +86,7 @@ const milkteaData = [
     img : "/img/product/milktea10.jpg",
     desc : "제주 녹차를 사용하여 쌉싸름한 맛과 달콤한 맛이 어우러진 밀크티",
     price : 4900,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [1]
     },
     {
@@ -95,7 +95,7 @@ const milkteaData = [
     img : "/img/product/milktea11.jpg",
     desc : "하동 호지를 사용하여 고소하고 부드러운 호지(볶은 녹차)의 풍미를 느낄 수 있는 음료",
     price : 4900,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [1]
     },
     {
@@ -104,7 +104,7 @@ const milkteaData = [
     img : "/img/product/milktea12.jpg",
     desc : "향긋한 얼그레이티와 깊은 풍미의 초콜렛 밀크티의 조화",
     price : 4900,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [1]
     },
     {
@@ -113,7 +113,7 @@ const milkteaData = [
     img : "/img/product/milktea13.jpg",
     desc : "달콤 상큼한 국내산 딸기를 듬뿍 넣고 자스민 그린티 & 얼그레이티를 블렌딩한 밀크티",
     price : 5100,
-    sugar : ["0%","30%","50%","70%","100%"],
+    sugar : ["0","30","50","70","100"],
     ice : [1]
     }
     ]

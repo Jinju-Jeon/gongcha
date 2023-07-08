@@ -6,13 +6,22 @@
     font-style: normal;
 }
 html{font-size: 20px;}
+body{font-size: 20px;font-family: 'Noto Sans KR'; color: #333;}
 
 $payb: 'paybooc-Bold';
 
 /* 세팅 */
-*,ul,ol,p,h1,h2,h3,h4,h5,h6{margin: 0;padding: 0; font-family: 'Noto Sans KR';}
 
-h1,h2,h3,h4,h5,h6,li,a{font-size: inherit; font-weight: inherit;color: inherit;text-decoration: inherit;list-style: none; font-family: inherit;}
+
+*,ul,ol,p,h1,h2,h3,h4,h5,h6, ul, li{
+    margin: 0;padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    text-decoration: inherit;
+    list-style: none;
+}
 
 img{width: 100%; display: block;}
 .App{width: 1080px; height: 1920px; background-color: #eee; position: relative; margin: 0 auto;}
@@ -26,3 +35,4 @@ $sub: #ae8689;
     .row{width: 1080px;}
     .col{padding: 0 5px;}
 }
+

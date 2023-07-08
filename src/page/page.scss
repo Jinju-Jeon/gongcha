@@ -154,3 +154,56 @@
 
     }
 }
+
+.Option{
+    .info{
+        display: flex;
+        padding: 0 50px;
+        justify-content: space-between;
+        background-color: #fff;
+
+        >div{
+            box-sizing: border-box;
+            padding: 15px;
+        }
+
+        .info_img{
+            width: 260px;}
+
+        .info_txt{
+            width: 620px;
+            >div{
+                display: flex;
+                justify-content: space-between;
+
+                margin-top: 10px;
+                font-size: 2rem;
+                font-family: default.$payb;
+
+                p:nth-child(2){color: default.$mainActive;}                
+            }//div
+        }//info_txt
+    }//info
+
+    .select_cover{
+        padding: 0 5px;
+        .select{
+            // input[type=radio]{display: none;}
+
+            h2{
+                font-family: default.$payb;
+                font-size: 1.75rem;
+            }
+
+            >ul{
+                display: flex;
+                li{width: 170px;}
+                p{text-align: center;}
+            }
+        }
+    }
+
+
+    
+
+}
