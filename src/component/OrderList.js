@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark, faCreditCard } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -22,7 +23,7 @@ export default function OrderList() {
                 </ul>
             </div>
             <div className='menu_btn'>
-                <button className='delete'>전체삭제</button>
+                <button className='delete'><FontAwesomeIcon icon={faXmark} /> 전체 삭제</button>
                 <div className='total'>
                   <p>총 금액</p>
                   <p>
@@ -30,8 +31,8 @@ export default function OrderList() {
                   </p>
                 </div>
                 <button className='pay'>
-                  주문 확인<br/>
-                  & 결제하기
+                  <p><FontAwesomeIcon icon={faCreditCard} /></p>                
+                  결제하기
                 </button>
             </div>
           </div>
