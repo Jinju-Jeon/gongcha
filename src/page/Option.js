@@ -2,19 +2,29 @@ import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhiskeyGlass, faMugSaucer } from '@fortawesome/free-solid-svg-icons'
-import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 
-const topping = ["밀크폼","펄(타피오카)","코코넛","알로에","화이트펄","치즈폼"]
+const topping = [
+  {name: "밀크폼", price: 500},
+  {name: "펄(타피오카)", price: 500},
+  {name: "코코넛", price: 500},
+  {name: "알로에", price: 500},
+  {name: "화이트폼", price: 500},
+  {name: "치즈폼", price: 700},
+]
 
 
 
 
 export default function Option() {
 
+  const navigate = useNavigate()
+
   const item = useLocation().state.menu
   
   //cup chk
+  const cupTxt = ['매장컵','일화용컵','개인컵']
   const [cupSelect, setCup] = useState(-1)
   function cupAction(e){
     setCup(Number(e.target.value))
@@ -27,11 +37,10 @@ export default function Option() {
         item.classList.remove('checked')
       }
     })
-    
-    
   }
 
   //ice chk
+  const iceTxt = ['적게','보통','많이']
   const [iceSelect, setIce] = useState(-1)
   function iceAction(e){
     setIce(Number(e.target.value))
@@ -65,25 +74,16 @@ export default function Option() {
       } else{
         item.classList.remove('checked')
       }
-
-    })
-    
-    
-  }
-
-  
-  
+    })    
+  }//sugarAction
   
   //topping chk
-  let topChktemp = new Array(6).fill(0)
-  const [topChk,setTopChk] = useState(Array(6).fill(0))
-
-  
-
+  let topSelecttemp = new Array(6)
+  const [topSelect,setTopSelect] = useState(Array(6).fill(0))
   function toppingAction(e){
     const index = e.target.value
     const chkNow = Number(e.target.checked)
-    let count = topChk.filter((el)=>(el==1)).length 
+    let count = topSelect.filter((el)=>(el==1)).length 
 
     if(count+chkNow>3){
       alert('토핑은 최대 3개까지 가능합니다.')
@@ -92,9 +92,9 @@ export default function Option() {
       return
     }    
 
-    topChktemp = topChk
-    topChktemp[index] = chkNow
-    setTopChk(topChktemp)
+    topSelecttemp = [...topSelect]
+    topSelecttemp[index] = chkNow
+    setTopSelect(topSelecttemp)
 
     const eLabel = document.querySelectorAll('.select_topping label')[index]
     if(chkNow){
@@ -102,10 +102,32 @@ export default function Option() {
     } else{
       eLabel.classList.remove('checked')
     }
-    
-  }
 
-const navigate = useNavigate()
+  
+  }//topping Action
+  const [nowPrice,setPrice] = useState(item.price)
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className='Option'>
@@ -172,7 +194,7 @@ const navigate = useNavigate()
                 >
                 <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt}></input>
                   <img src={process.env.PUBLIC_URL + '/img/ice_'+opt+'.png'}></img>
-                  <p>{opt===0 ? "Less Ice" : (opt===1 ? "Regular Ice" : "Full Ice")}</p>
+                  <p>{iceTxt[opt]}</p>
                   </label>
               </li>
               )
@@ -212,7 +234,7 @@ const navigate = useNavigate()
                       onChange={(e)=>{toppingAction(e)}}
                     />
                     <img src={process.env.PUBLIC_URL + '/img/top'+i+'.gif'}></img>
-                    <p>{item}</p> 
+                    <p>{item.name}</p> 
                   </label>
                 </li>
                 ) ///map-return
@@ -226,12 +248,38 @@ const navigate = useNavigate()
       <div className='item_total'>
           <h2>주문 확인</h2>
           <div>
-            <div>
-              컵/얼음량/당도/추가토핑
-            </div>
-            <div>
-              <p>다른 메뉴 추가</p>
-              <p>바로구매</p>
+            <div className='now_option'>
+              <ul>
+                <li><b>컵: </b>{cupTxt[cupSelect]}</li>
+                <li><b>얼음: </b>{iceTxt[iceSelect]}</li>
+                <li><b>당도: </b>{sugarSelect===-1 ? "" : sugarSelect+"%" }</li>
+                <li>
+                  <b>추가 토핑: </b>
+                  {
+                  topping.filter((item,i)=>(topSelect[i]===1)).length === 0 ? "없음" :
+                  topping.filter((item,i)=>(topSelect[i]===1)).map((item,i)=>(
+                        <span key={i}>{item.name}</span>
+                    ))
+                }</li>
+
+              </ul>
+            </div>{/* now_option */}
+            <div className='order_detail'>
+              <div className='quantity'>
+                <h4>수량</h4>
+                <p>
+                  <button>-</button>
+                  <input type="number" value={1}></input>
+                  <button>+</button>
+                </p>
+
+              </div>
+              <div className='total'>
+                <h4>현재 금액</h4>
+                <p>{nowPrice.toLocaleString()}원</p>                
+              </div>
+              <button>다른 메뉴 추가</button>
+              <button className='pay'>바로구매</button>
             </div>
           </div>
       </div>
