@@ -1,4 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
+
+
 
 export default function OrderList() {
   return (
@@ -19,8 +22,17 @@ export default function OrderList() {
                 </ul>
             </div>
             <div className='menu_btn'>
-                전체삭제
-                결제하기
+                <button className='delete'>전체삭제</button>
+                <div className='total'>
+                  <p>총 금액</p>
+                  <p>
+                    얼마얼마 원
+                  </p>
+                </div>
+                <button className='pay'>
+                  주문 확인<br/>
+                  & 결제하기
+                </button>
             </div>
           </div>
     </div>

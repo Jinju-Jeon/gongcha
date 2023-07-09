@@ -121,7 +121,7 @@
         padding: 20px 0px;
         width: 100%;
         border-radius: 10px;
-        background-color: default.$mainC;
+        background-color: default.$sub;
 
         h1{
             padding: 0 10px;
@@ -133,7 +133,7 @@
         >div{display: flex;}
 
         .order_cover{
-            width: 870px;
+            width: 800px;
             box-sizing: border-box;
             padding: 10px;
 
@@ -151,6 +151,33 @@
                 
             }
         }
+
+        .menu_btn{
+            padding: 10px;
+            font-family: default.$payb;
+            
+            button{
+                display: block;
+                width: 260px;                
+                &.delete{
+                    height: 50px;
+                    background-color: #fff;
+                }
+                &.pay{
+                    height: 100px;
+                    background-color: #fff;
+                }
+            }
+
+            div{
+                margin: 30px 0 20px;
+                p:nth-child(1){
+                    font-size: 2rem;
+                }
+                p:nth-child(2){}
+            }
+
+        }////menu_btn
 
     }
 }

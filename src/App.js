@@ -1,7 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 
-
 /* css */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './default.scss'
@@ -21,6 +20,11 @@ import originalData from './data/original'
 import fruitData from './data/fruit'
 import fruitmixData from './data/fruitmix'
 import coffeeData from './data/coffee'
+
+
+
+
+
 
 
 
