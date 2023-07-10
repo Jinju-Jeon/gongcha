@@ -17,12 +17,25 @@ const order = createSlice({
 
         deleteAll(state){
             state.length = 0
+        },
+
+        editItem(state,action){
+            const editted = action.payload
+            const eState = state[editted.index]
+
+            eState.item = editted.item
+            eState.cup = editted.cup
+            eState.ice = editted.ice
+            eState.sugarSelect = editted.sugarSelect
+            eState.topping = editted.topping
+            eState.quant = editted.quant
+            eState.onePrice = editted.onePrice
         }
 
     },
 })
 
-export const {addItem, deleteItem, deleteAll} = order.actions
+export const {addItem, deleteItem, deleteAll, editItem} = order.actions
 
 
 export default configureStore({

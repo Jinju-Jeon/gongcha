@@ -2,17 +2,23 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhiskeyGlass, faMugSaucer } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft, faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
+import { editItem } from '../data/store'
+
 
 export default function Editpage() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const before = useLocation().state.editted
     const item = before.item
+
+    const editIndex = useLocation().state.index
 
     const toppingTxt = [
         {name: "밀크폼", price: 500},
@@ -22,8 +28,8 @@ export default function Editpage() {
         {name: "화이트폼", price: 500},
         {name: "치즈폼", price: 700},
       ]
-    
-    const [nowPrice,setPrice] = useState(item.price)
+
+    const [nowPrice,setPrice] = useState(before.onePrice)
 
     //cup chk
     const cupTxt = ['매장컵','일회용컵','개인컵']
@@ -33,15 +39,25 @@ export default function Editpage() {
     }
     
     //ice chk
+    let iceDefault = before.ice
     const iceTxt = ['적게','보통','많이']
-    const [iceSelect, setIce] = useState(before.ice)
+    const [iceSelect, setIce] = useState(iceDefault)
+    if(item.ice.length>1){
+      iceDefault=-1
+    }
+
     function iceAction(e){
         setIce(Number(e.target.value))
         
     }
 
     //sugar chk
-    const [sugarSelect, setSugar] = useState(before.sugarSelect)
+    let sugarDefault = before.sugarSelect
+    const [sugarSelect, setSugar] = useState(sugarDefault)
+    if(item.sugar.length>1){
+      sugarDefault=-1
+    }
+
     function sugarAction(e){
       setSugar(Number(e.target.value))
       const sugarEl = document.querySelectorAll('.select_sugar label')
@@ -55,7 +71,7 @@ export default function Editpage() {
       })
     }//sugarAction
   
-    console.log(before)
+    
 
   //topping chk
   let topSelecttemp = new Array(6)
@@ -82,6 +98,67 @@ export default function Editpage() {
     setPrice(item.price+additional)
 
   }//topping Action
+
+  function chkClear(){
+    const chkEl = document.querySelectorAll('.select input')
+    const chkLabel = document.querySelectorAll('.select label')
+    chkEl.forEach((item)=>(item.checked=false))
+
+    chkLabel.forEach((item)=>(item.classList.remove('checked')))
+
+    setCup(-1)
+    setIce(iceDefault)
+    const iceLabel = document.querySelectorAll('.select_ice label')
+    iceLabel.forEach((item)=>{
+      if(item.htmlFor.replace('ice_','')==iceDefault){
+        item.classList.add('checked')
+      }
+    })
+
+
+    setSugar(sugarDefault)
+    const sugarLabel = document.querySelectorAll('.select_sugar label')
+    sugarLabel.forEach((item)=>{
+      if(item.htmlFor.replace('sugar_','')==sugarDefault){
+        item.classList.add('checked')
+      }
+    })
+
+
+
+    setTopSelect(Array(6).fill(0))
+    setPrice(item.price)
+  }
+
+
+  const [quantity,setQuantity] = useState(1)
+  function quantChange(value){
+    if(value<1){
+      alert('1개 이상부터 주문이 가능합니다.')
+    } else{
+      setQuantity(value)
+    }    
+  }
+
+  function storing(){
+    if(cupSelect===-1){
+      alert('컵을 선택해주세요')
+      return
+      } else if(iceSelect===-1){
+        alert('얼음량을 선택해주세요')
+        return
+      } else if(sugarSelect===-1){
+        alert('당도를 선택해주세요')
+        return
+      }
+    //if
+
+
+    
+    dispatch(editItem({index: editIndex, item: item, cup: cupSelect, ice: iceSelect, sugarSelect: sugarSelect, topping: topSelect, quant: quantity, onePrice: nowPrice*quantity}))
+    navigate('/menu/newseason')
+    
+  }
     
 
 
@@ -191,6 +268,98 @@ export default function Editpage() {
           })}
           </ul>
         </div>
+
+        <div className='select select_topping'>
+          <h2>추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
+          <ul>
+            {
+              toppingTxt.map((item,i)=>{
+                if(topSelect[i]===1){
+                  return(
+                    <li key={i}>
+                      <label className="checked">
+                        <input type="checkbox" name="topOpt" id={"top"+i} value={i} 
+                          onChange={(e)=>{toppingAction(e)}} checked
+                        />
+                        <img src={process.env.PUBLIC_URL + '/img/top'+i+'.gif'}></img>
+                        <p>
+                          {item.name}<br/>
+                          (+{item.price}원)
+                        </p> 
+                      </label>
+                    </li>
+                  )
+                } else{
+                  return(
+                  <li key={i}>
+                    <label className={""}>
+                      <input type="checkbox" name="topOpt" id={"top"+i} value={i} 
+                        onChange={(e)=>{toppingAction(e)}}
+                      />
+                      <img src={process.env.PUBLIC_URL + '/img/top'+i+'.gif'}></img>
+                      <p>
+                        {item.name}<br/>
+                        (+{item.price}원)
+                      </p> 
+                    </label>
+                  </li>
+                  ) ///map-return
+
+                }
+
+              })//map-end
+            }
+          </ul>
+        </div>
+
+
+      </div>
+      
+      <div className='item_total'>
+          <h2>주문 확인</h2>
+          <div>
+            <div className='now_option'>
+              <ul>
+                <li><b>컵: </b>{cupTxt[cupSelect]}</li>
+                <li><b>얼음: </b>{iceTxt[iceSelect]}</li>
+                <li><b>당도: </b>{sugarSelect===-1 ? "" : sugarSelect+"%" }</li>
+                <li>
+                  <b>추가 토핑: </b>
+                  {
+                  toppingTxt.filter((item,i)=>(topSelect[i]===1)).length === 0 ? "없음" :
+                  toppingTxt.filter((item,i)=>(topSelect[i]===1)).map((item,i)=>(
+                        <span key={i}>{item.name}</span>
+                    ))
+                }</li>
+
+              </ul>
+            </div>{/* now_option */}
+            <div className='order_detail'>
+              <div className='quantity'>
+                <h4>수량</h4>
+                <p>
+                  <button onClick={()=>(quantChange(quantity-1))}>
+                    <FontAwesomeIcon icon={faCircleMinus} />
+                  </button>
+                  <span className='now_quant'>{quantity}</span>
+                  <button onClick={()=>(quantChange(quantity+1))}>
+                    <FontAwesomeIcon icon={faCirclePlus} />
+                  </button>
+                </p>
+
+              </div>
+              <div className='total'>
+                <h4>현재 금액</h4>
+                <p>{(nowPrice*quantity).toLocaleString()}원</p>                
+              </div>
+              <div className='btn_cover'>
+                <button className='add_other' onClick={()=>{
+                    storing()
+                  }}>다른 메뉴 추가</button>
+                <button className='pay'>바로결제</button>
+              </div>
+            </div>
+          </div>
       </div>
 
     </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhiskeyGlass, faMugSaucer } from '@fortawesome/free-solid-svg-icons'
@@ -125,8 +125,25 @@ export default function Option() {
     chkLabel.forEach((item)=>(item.classList.remove('checked')))
 
     setCup(-1)
-    setIce(-1)
-    setSugar(-1)
+    setIce(iceDefault)
+    const iceLabel = document.querySelectorAll('.select_ice label')
+    iceLabel.forEach((item)=>{
+      if(item.htmlFor.replace('ice_','')==iceDefault){
+        item.classList.add('checked')
+      }
+    })
+
+
+    setSugar(sugarDefault)
+    const sugarLabel = document.querySelectorAll('.select_sugar label')
+    sugarLabel.forEach((item)=>{
+      if(item.htmlFor.replace('sugar_','')==sugarDefault){
+        item.classList.add('checked')
+      }
+    })
+
+
+
     setTopSelect(Array(6).fill(0))
     setPrice(item.price)
   }
@@ -154,14 +171,11 @@ export default function Option() {
       } else if(sugarSelect===-1){
         alert('당도를 선택해주세요')
         return
-      }
-      
-      navigate('/menu/newseason')
+      }      
     //if
 
-
-    
     dispatch(addItem({item: item, cup: cupSelect, ice: iceSelect, sugarSelect: sugarSelect, topping: topSelect, quant: quantity, onePrice: nowPrice*quantity}))
+    navigate('/menu/newseason')
     
   }
 
@@ -232,10 +246,10 @@ export default function Option() {
         <div className='select select_ice'>
           <h2>얼음량</h2>
         <ul>
-          {item.ice.map((opt,i,arr)=>{
+          {item.ice.map((opt,i)=>{
             return(
               <li key={i}>
-                <label htmlFor={'ice_'+opt} className={arr.length === 1 ? 'checked' : ' '}
+                <label htmlFor={'ice_'+opt} className={iceSelect === opt ? 'checked' : ' '}
                   onClick={(e)=>{iceAction(e)}}
                 >
                 <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt} ></input>
