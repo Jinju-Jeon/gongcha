@@ -18,8 +18,6 @@ export default function OrderList() {
                   <li>주문리스트를적기</li>
                   <li>주문리스트를적기</li>
                   <li>주문리스트를적기</li>
-                  <li>주문리스트를적기</li>
-                  <li>주문리스트를적기</li>
                 </ul>
             </div>
             <div className='menu_btn'>
