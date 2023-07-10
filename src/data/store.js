@@ -8,12 +8,21 @@ const order = createSlice({
     reducers: {
         addItem(state,action){
             state.push(action.payload)
+        },
+
+        deleteItem(state,action){
+            const index = action.payload
+            state.splice(index,1)
+        },
+
+        deleteAll(state){
+            state.length = 0
         }
 
     },
 })
 
-export const {addItem} = order.actions
+export const {addItem, deleteItem, deleteAll} = order.actions
 
 
 export default configureStore({

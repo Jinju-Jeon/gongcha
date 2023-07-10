@@ -161,14 +161,14 @@ export default function Option() {
         alert('당도를 선택해주세요')
         return
       }
+      
+      navigate('/menu/newseason')
     //if
 
     const passTopping = topping.filter((item,i)=>(topSelect[i]===1))
 
     
-    dispatch(addItem({item: item, cup: cupTxt[cupSelect], ice: iceTxt[iceSelect], sugarSelect: sugarSelect, topping: passTopping, quant: quantity}))
-
-    navigate('/menu/newseason')
+    dispatch(addItem({item: item, cup: cupTxt[cupSelect], ice: iceTxt[iceSelect], sugarSelect: sugarSelect, topping: passTopping, quant: quantity, onePrice: nowPrice*quantity}))
     
   }
 
@@ -339,7 +339,9 @@ export default function Option() {
                 <p>{(nowPrice*quantity).toLocaleString()}원</p>                
               </div>
               <div className='btn_cover'>
-                <button className='add_other' onClick={()=>(storing())}>다른 메뉴 추가</button>
+                <button className='add_other' onClick={()=>{
+                    storing()
+                  }}>다른 메뉴 추가</button>
                 <button className='pay'>바로결제</button>
               </div>
             </div>
