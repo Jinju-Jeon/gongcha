@@ -26,7 +26,7 @@ export default function Option() {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
-  const state = useSelector(state=>state)
+
 
   const item = useLocation().state.menu
   
@@ -72,22 +72,6 @@ export default function Option() {
   if(item.sugar.length===1){sugarDefault=item.sugar[0]}
   const [sugarSelect, setSugar] = useState(sugarDefault)
   function sugarAction(e){
-
-    /* setSugar(Number(e.target.value))
-
-    const sugarWh = [0,30,50,70,100]
-    const sugarEl = document.querySelectorAll('.select_sugar label')
-    const nth = sugarWh.findIndex((el)=>(el===Number(e.target.value)))
-    
-    
-    sugarEl.forEach((item,i)=>{
-      if(i===nth){
-        item.classList.add('checked')
-      } else{
-        item.classList.remove('checked')
-      }} */     
-
-
     setSugar(Number(e.target.value))
     const sugarEl = document.querySelectorAll('.select_sugar label')
     sugarEl.forEach((item)=>{
@@ -166,6 +150,27 @@ export default function Option() {
   const [nowPrice,setPrice] = useState(item.price)
 
 
+  function storing(){
+    if(cupSelect===-1){
+      alert('컵을 선택해주세요')
+      return
+      } else if(iceSelect===-1){
+        alert('얼음량을 선택해주세요')
+        return
+      } else if(sugarSelect===-1){
+        alert('당도를 선택해주세요')
+        return
+      }
+    //if
+
+    const passTopping = topping.filter((item,i)=>(topSelect[i]===1))
+
+    
+    dispatch(addItem({item: item, cup: cupTxt[cupSelect], ice: iceTxt[iceSelect], sugarSelect: sugarSelect, topping: passTopping, quant: quantity}))
+
+    navigate('/menu/newseason')
+    
+  }
 
 
 
@@ -322,7 +327,7 @@ export default function Option() {
                   <button onClick={()=>(quantChange(quantity-1))}>
                     <FontAwesomeIcon icon={faCircleMinus} />
                   </button>
-                  <p className='now_quant'>{quantity}</p>
+                  <span className='now_quant'>{quantity}</span>
                   <button onClick={()=>(quantChange(quantity+1))}>
                     <FontAwesomeIcon icon={faCirclePlus} />
                   </button>
@@ -334,7 +339,7 @@ export default function Option() {
                 <p>{(nowPrice*quantity).toLocaleString()}원</p>                
               </div>
               <div className='btn_cover'>
-                <button className='add_other'>다른 메뉴 추가</button>
+                <button className='add_other' onClick={()=>(storing())}>다른 메뉴 추가</button>
                 <button className='pay'>바로결제</button>
               </div>
             </div>
