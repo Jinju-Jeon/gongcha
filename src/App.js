@@ -10,6 +10,7 @@ import Menu from "./page/Menu";
 import Home from "./page/Home";
 import List from "./component/List";
 import Option from './page/Option'
+import Editpage from "./page/Editpage";
 
 /* datas */
 import bestData from './data/best'
@@ -61,6 +62,7 @@ function App() {
           <Route path="coffee" element={<List list={coffee} />}></Route>
         </Route>
         <Route path="/option/:id" element={<Option />}/>
+        <Route path="/editpage" element={<Editpage />}/>
       </Routes>
     </div>
   );

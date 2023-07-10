@@ -159,36 +159,36 @@
             .order_list{
                 border-radius: 10px;
                 background-color: #fff;
-                height: 400px;
+                height: 475px;
                 overflow-y: scroll;
                 &::-webkit-scrollbar{display: none;}
 
                 li{
                     font-size: 1rem;
-                    height: 80px;
+                    height: 95px;
                     box-sizing: border-box;
                     padding: 10px 5px;
                     position: relative;
-
-                    &:nth-child(2n){background-color: #eee;}
-
-                    p:first-child{
-                        font-weight: bold;
+                    >div{
                         display: flex;
                         justify-content: space-between;
+                        margin-bottom: 5px;
 
-                        span:nth-child(2){margin-right: 70px;}
+                        .li_top{
+                            display: flex;
+                            p:first-child{margin-right: 10px;}
+                        }
+
+                        button{
+                            font-size: 1rem;
+                            margin-right: 15px;
+                            &:last-child{color: default.$mainC;}
+                        }
+
+                        &:first-child{font-size: 1.25rem;}
                     }
 
-                    button{
-                        position: absolute;
-                        top: 10px; right: 10px;
-                        padding: 5px;
-                        border-radius: 5px;
-                        background-color: #fff;
-                        border: 1px solid default.$mainC;
-                        color: default.$mainC;
-                    }
+                    &:nth-child(2n){background-color: #eee;}
                 }
 
                 
@@ -219,7 +219,7 @@
 
                     background-color: #444;
                     color: #fff;
-                    padding: 5px 10px;
+                    padding: 15px 10px;
 
                     p{
                         svg{

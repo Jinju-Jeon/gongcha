@@ -9,7 +9,7 @@ import { faArrowLeft, faCircleMinus, faCirclePlus } from '@fortawesome/free-soli
 
 import { addItem } from '../data/store'
 
-const topping = [
+const toppingTxt = [
   {name: "밀크폼", price: 500},
   {name: "펄(타피오카)", price: 500},
   {name: "코코넛", price: 500},
@@ -63,8 +63,6 @@ export default function Option() {
         item.classList.remove('checked')
       }
     })
-    
-    
   }
 
   //sugar chk
@@ -82,10 +80,6 @@ export default function Option() {
         item.classList.remove('checked')
       }
     })
-    
-      
-      
-      
   }//sugarAction
   
   //topping chk
@@ -116,7 +110,7 @@ export default function Option() {
 
 
     let additional = 0
-    const tempPrice = topping.filter((el,i)=>(topSelecttemp[i]===1))
+    const tempPrice = toppingTxt.filter((el,i)=>(topSelecttemp[i]===1))
     tempPrice.forEach((item)=>(additional+=item.price)) 
     setPrice(item.price+additional)
 
@@ -165,10 +159,9 @@ export default function Option() {
       navigate('/menu/newseason')
     //if
 
-    const passTopping = topping.filter((item,i)=>(topSelect[i]===1))
 
     
-    dispatch(addItem({item: item, cup: cupTxt[cupSelect], ice: iceTxt[iceSelect], sugarSelect: sugarSelect, topping: passTopping, quant: quantity, onePrice: nowPrice*quantity}))
+    dispatch(addItem({item: item, cup: cupSelect, ice: iceSelect, sugarSelect: sugarSelect, topping: topSelect, quant: quantity, onePrice: nowPrice*quantity}))
     
   }
 
@@ -276,10 +269,10 @@ export default function Option() {
         </div>
 
         <div className='select select_topping'>
-          <h2>추가 토핑<span>(최대 3개)</span></h2>
+          <h2>추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
           <ul>
             {
-              topping.map((item,i)=>{
+              toppingTxt.map((item,i)=>{
                 return(
                 <li key={i}>
                   <label>
@@ -312,8 +305,8 @@ export default function Option() {
                 <li>
                   <b>추가 토핑: </b>
                   {
-                  topping.filter((item,i)=>(topSelect[i]===1)).length === 0 ? "없음" :
-                  topping.filter((item,i)=>(topSelect[i]===1)).map((item,i)=>(
+                  toppingTxt.filter((item,i)=>(topSelect[i]===1)).length === 0 ? "없음" :
+                  toppingTxt.filter((item,i)=>(topSelect[i]===1)).map((item,i)=>(
                         <span key={i}>{item.name}</span>
                     ))
                 }</li>
