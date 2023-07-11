@@ -139,7 +139,7 @@
         position: absolute; bottom: 0;
         padding: 20px 0px;
         width: 100%;
-        border-radius: 10px;
+        border-radius: 10px 10px  0 0;
         background-color: default.$mainC;
 
         h1{
@@ -152,7 +152,7 @@
         >div{display: flex;}
 
         .order_cover{
-            width: 800px;
+            width: 880px;
             box-sizing: border-box;
             padding: 10px;
 
@@ -175,8 +175,8 @@
                         margin-bottom: 5px;
 
                         .li_top{
-                            display: flex;
-                            p:first-child{margin-right: 10px;}
+                            
+                            padding-right: 10px;
                         }
 
                         button{
@@ -201,7 +201,7 @@
             
             button{
                 display: block;
-                width: 260px;     
+                width: 160px;     
                 border-radius: 10px;
                 
                 &.delete{
@@ -225,7 +225,7 @@
                         svg{
                             display: block;
                             margin: 0 auto 15px;
-                            font-size: 5rem;
+                            font-size: 4rem;
                         }
 
                         border-bottom: 2px solid #fff;
@@ -279,6 +279,14 @@
             }//div
             >p{color: default.$sub;}
         }//info_txt
+
+        .all_clear{
+            margin-top: 50px;
+            padding: 5px 10px;
+            color: default.$mainC;
+            border: 1px solid default.$mainC;
+            border-radius: 10px;
+        }
     }//info
 
     .select_cover{
@@ -335,7 +343,7 @@
         bottom: 0;
         padding: 20px 0px;
         width: 100%; height: 440px;
-        border-radius: 10px;
+        border-radius: 10px 10px  0 0;
         background-color: default.$mainC;    
         
         h2{
@@ -435,3 +443,156 @@
 
 }
 
+.pay_js{
+    .pay_inner{
+        width: 950px; margin: 0 auto;
+    }
+    h1{
+        padding: 0 5px;
+        margin: 30px 0 10px;
+        font-size: 2rem;
+        font-family: default.$payb;
+    }
+    .pay_list{
+        width: 950px; height: 900px;
+        margin-bottom: 15px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar{display: none;}
+
+        border: 3px solid default.$mainC;
+        box-sizing: content-box;
+
+
+        li{
+            background-color: #fff;
+            box-sizing: border-box;
+            height: 150px;
+            padding: 10px;
+
+            &:nth-child(2n){background-color: #eee;}
+        }
+
+        li>div{
+            display: flex;
+
+            >div:nth-child(1){
+                width: 110px;
+                margin-right: 20px;
+            } //img
+
+            >div:nth-child(2){
+                width: 800px;
+            }
+
+            .info_top{
+                font-size: 1.25rem;
+                font-family: default.$payb;
+                display: flex;
+                justify-content: space-between;
+            }
+            .selected_opt{
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+
+                span{
+                    padding-right: 5px;
+                }
+
+                .button_cover{
+                    margin-top: 30px;
+
+                    button{
+                        padding: 5px 10px;
+                        border: 1px solid default.$mainC;
+                        border-radius: 15px;
+                        &:nth-child(1){margin-right: 10px;}
+                    }
+                }
+            }//selected_opt
+        }//li>div
+    }//pay_list
+
+    .pay_total{
+        text-align: right;
+        margin-bottom: 30px;
+        
+        p:nth-child(1){
+            font-size: 1.5rem;
+            font-family: default.$payb;
+            color: default.$mainActive;
+
+            span{font-size: 2rem; padding-right: 5px;}
+        }
+        p:nth-child(2){
+            color: #555;
+
+            &.on{
+                color: default.$mainActive;
+            }
+        }
+    }//pay_total
+
+    .membership{
+        font-size: 1.75rem;
+        text-align: center;
+
+        button{
+            width: 220px; height: 80px;
+            border: 3px solid #333;
+            padding: 10px 0;
+            border-radius: 3px;
+
+            &:nth-child(1){
+                margin-right: 100px;
+                background-color: #fff;
+                border-color: default.$mainC;
+                color: default.$mainC;
+            }
+
+            &:nth-child(2){
+                background-color: default.$mainC;
+                border-color: default.$mainC;
+                color: #fff;
+            }
+        }
+        
+    }
+
+}//pay_js
+
+    .m_modal{
+        .modal-content{
+            width: 550px;
+        }
+        input{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+        }
+        button{
+            border-radius: 10px;
+            padding: 10px 25px;
+        }
+
+        .m_ok{
+            background-color: default.$mainC;
+            border: 1px solid default.$mainC;
+            margin-right: 30px;
+            &:hover,&.btn:active,:not(&.btn-check)+&.btn:active,&.btn:focus-visible{
+                border: 1px solid default.$mainActive;
+                background-color: default.$mainActive;
+            }
+        }
+
+        .m_no{
+            background-color: #fff;
+            color: default.$mainC;
+            border: 1px solid default.$mainC;
+            margin-right: 30px;
+            &:hover,&.btn:active,:not(&.btn-check)+&.btn:active,&.btn:focus-visible{
+                background-color: #eee;
+                border: 1px solid default.$mainActive;
+            }
+        }
+    }

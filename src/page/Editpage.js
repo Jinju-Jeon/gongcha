@@ -9,6 +9,7 @@ import { faWhiskeyGlass, faMugSaucer } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft, faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
 import { editItem } from '../data/store'
+import { iceTxt, cupTxt, toppingTxt } from '../data/optTxt'
 
 
 export default function Editpage() {
@@ -20,19 +21,8 @@ export default function Editpage() {
 
     const editIndex = useLocation().state.index
 
-    const toppingTxt = [
-        {name: "밀크폼", price: 500},
-        {name: "펄(타피오카)", price: 500},
-        {name: "코코넛", price: 500},
-        {name: "알로에", price: 500},
-        {name: "화이트폼", price: 500},
-        {name: "치즈폼", price: 700},
-      ]
-
-    const [nowPrice,setPrice] = useState(before.onePrice)
 
     //cup chk
-    const cupTxt = ['매장컵','일회용컵','개인컵']
     const [cupSelect, setCup] = useState(before.cup)
     function cupAction(e){
       setCup(Number(e.target.value))
@@ -40,7 +30,6 @@ export default function Editpage() {
     
     //ice chk
     let iceDefault = before.ice
-    const iceTxt = ['적게','보통','많이']
     const [iceSelect, setIce] = useState(iceDefault)
     if(item.ice.length>1){
       iceDefault=-1
@@ -96,8 +85,15 @@ export default function Editpage() {
     const tempPrice = toppingTxt.filter((el,i)=>(topSelecttemp[i]===1))
     tempPrice.forEach((item)=>(additional+=item.price)) 
     setPrice(item.price+additional)
-
   }//topping Action
+
+  let addTemp = 0
+  const tempPrice = toppingTxt.filter((el,i)=>(topSelect[i]===1))
+  tempPrice.forEach((item)=>(addTemp+=item.price))
+
+
+  const [nowPrice,setPrice] = useState(item.price+addTemp)
+
 
   function chkClear(){
     const chkEl = document.querySelectorAll('.select input')
@@ -128,10 +124,11 @@ export default function Editpage() {
 
     setTopSelect(Array(6).fill(0))
     setPrice(item.price)
+    setQuantity(1)
   }
 
 
-  const [quantity,setQuantity] = useState(1)
+  const [quantity,setQuantity] = useState(before.quant)
   function quantChange(value){
     if(value<1){
       alert('1개 이상부터 주문이 가능합니다.')
@@ -140,7 +137,7 @@ export default function Editpage() {
     }    
   }
 
-  function storing(){
+  function storing(link){
     if(cupSelect===-1){
       alert('컵을 선택해주세요')
       return
@@ -156,7 +153,7 @@ export default function Editpage() {
 
     
     dispatch(editItem({index: editIndex, item: item, cup: cupSelect, ice: iceSelect, sugarSelect: sugarSelect, topping: topSelect, quant: quantity, onePrice: nowPrice*quantity}))
-    navigate('/menu/newseason')
+    navigate(link)
     
   }
     
@@ -190,7 +187,7 @@ export default function Editpage() {
             <p>{item.price.toLocaleString()}</p>
           </div>
           <p>{item.desc}</p>
-          <button
+          <button className='all_clear'
             onClick={()=>(chkClear())}
           >전체 선택 해제</button>
         </div>{/* info_txt */}
@@ -354,9 +351,12 @@ export default function Editpage() {
               </div>
               <div className='btn_cover'>
                 <button className='add_other' onClick={()=>{
-                    storing()
+                    storing('/menu/newseason')
                   }}>다른 메뉴 추가</button>
-                <button className='pay'>바로결제</button>
+                <button className='pay' onClick={()=>{
+                  storing('/pay')
+                }}
+                >바로결제</button>
               </div>
             </div>
           </div>

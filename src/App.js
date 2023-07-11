@@ -21,6 +21,7 @@ import originalData from './data/original'
 import fruitData from './data/fruit'
 import fruitmixData from './data/fruitmix'
 import coffeeData from './data/coffee'
+import Pay from "./page/Pay";
 
 
 
@@ -42,9 +43,6 @@ function App() {
 
   const newseason = [milktea[0],smoothie[0],milktea[1],smoothie[1]]
   
-  
-
-  
 
   return (
     <div className="App">
@@ -63,6 +61,7 @@ function App() {
         </Route>
         <Route path="/option/:id" element={<Option />}/>
         <Route path="/editpage" element={<Editpage />}/>
+        <Route path="/pay" element={<Pay />}/>
       </Routes>
     </div>
   );

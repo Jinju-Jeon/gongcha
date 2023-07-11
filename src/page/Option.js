@@ -8,15 +8,7 @@ import { faArrowLeft, faCircleMinus, faCirclePlus } from '@fortawesome/free-soli
 
 
 import { addItem } from '../data/store'
-
-const toppingTxt = [
-  {name: "밀크폼", price: 500},
-  {name: "펄(타피오카)", price: 500},
-  {name: "코코넛", price: 500},
-  {name: "알로에", price: 500},
-  {name: "화이트폼", price: 500},
-  {name: "치즈폼", price: 700},
-]
+import { iceTxt, cupTxt, toppingTxt } from '../data/optTxt'
 
 
 
@@ -31,7 +23,7 @@ export default function Option() {
   const item = useLocation().state.menu
   
   //cup chk
-  const cupTxt = ['매장컵','일회용컵','개인컵']
+  
   const [cupSelect, setCup] = useState(-1)
   function cupAction(e){
     setCup(Number(e.target.value))
@@ -47,7 +39,7 @@ export default function Option() {
   }
 
   //ice chk
-  const iceTxt = ['적게','보통','많이']
+  
   let iceDefault = -1;
   if(item.ice.length===1){iceDefault=item.ice[0]}
   const [iceSelect, setIce] = useState(iceDefault)
@@ -146,6 +138,8 @@ export default function Option() {
 
     setTopSelect(Array(6).fill(0))
     setPrice(item.price)
+    setQuantity(1)
+
   }
 
 
@@ -161,7 +155,7 @@ export default function Option() {
   const [nowPrice,setPrice] = useState(item.price)
 
 
-  function storing(){
+  function storing(link){
     if(cupSelect===-1){
       alert('컵을 선택해주세요')
       return
@@ -175,7 +169,7 @@ export default function Option() {
     //if
 
     dispatch(addItem({item: item, cup: cupSelect, ice: iceSelect, sugarSelect: sugarSelect, topping: topSelect, quant: quantity, onePrice: nowPrice*quantity}))
-    navigate('/menu/newseason')
+    navigate(link)
     
   }
 
@@ -202,7 +196,7 @@ export default function Option() {
             <p>{item.price.toLocaleString()}</p>
           </div>
           <p>{item.desc}</p>
-          <button
+          <button className='all_clear'
             onClick={()=>(chkClear())}
           >전체 선택 해제</button>
         </div>{/* info_txt */}
@@ -347,9 +341,12 @@ export default function Option() {
               </div>
               <div className='btn_cover'>
                 <button className='add_other' onClick={()=>{
-                    storing()
+                    storing('/menu/newseason')
                   }}>다른 메뉴 추가</button>
-                <button className='pay'>바로결제</button>
+                <button className='pay' onClick={()=>{
+                  storing('/pay')
+                }}
+                >바로결제</button>
               </div>
             </div>
           </div>

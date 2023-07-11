@@ -4,30 +4,23 @@ import { faXmark, faCreditCard } from '@fortawesome/free-solid-svg-icons'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteItem, deleteAll } from '../data/store'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { iceTxt, cupTxt, toppingTxt } from '../data/optTxt'
 
 
 
 export default function OrderList() {
   const state = useSelector(state=>state)
+  
   const nowOrder = state.order
   let wholePrice = 0
 
-  const topping = [
-    {name: "밀크폼", price: 500},
-    {name: "펄(타피오카)", price: 500},
-    {name: "코코넛", price: 500},
-    {name: "알로에", price: 500},
-    {name: "화이트폼", price: 500},
-    {name: "치즈폼", price: 700},
-  ]
-
   nowOrder.forEach((item)=>(wholePrice+=item.onePrice))
-  console.log(nowOrder)
-  const iceTxt = ['적게','보통','많이']
-  const cupTxt = ['매장컵','일회용컵','개인컵']
+  
   
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
 
 
@@ -36,7 +29,14 @@ export default function OrderList() {
     liShape = Array(4-nowOrder.length).fill('')    
   }
 
-  const dispatch = useDispatch()
+  function payTest(){
+    if(nowOrder.length<1){
+      alert('1개 이상의 메뉴를 주문해주세요.')
+    } else{
+      navigate('/pay')
+    }
+  }
+
 
 
   return (
@@ -46,22 +46,14 @@ export default function OrderList() {
             <div className='order_cover'>
                 <ul className='order_list'>
                   {nowOrder.map((el,i)=>{
-                    const topTxt = topping.filter((txt,i)=>(el.topping[i]===1))
+                    const topTxt = toppingTxt.filter((txt,i)=>(el.topping[i]===1))
                     
                     return(
                       <li key={i}>
                         <div>
                           <p><b>{(i+1)+". "+el.item.name}</b></p>
                           <div className='li_top'>
-                            <p>{el.onePrice.toLocaleString()}원</p>
-                            <p>
-                              <button
-                                onClick={()=>(navigate('/editpage',{state: {index: i, editted: el}}))}
-                              >수정</button>
-                              <button className='delete'
-                                onClick={()=>(dispatch(deleteItem(i)))}
-                              >삭제</button>
-                            </p>
+                            {el.onePrice.toLocaleString()}원
                           </div>
                         </div>
                         <div>
@@ -76,6 +68,14 @@ export default function OrderList() {
                             )) 
                             } - 
                             수량: {el.quant}
+                          </p>
+                          <p>
+                            <button
+                              onClick={()=>(navigate('/editpage',{state: {index: i, editted: el}}))}
+                            >수정</button>
+                            <button className='delete'
+                              onClick={()=>(dispatch(deleteItem(i)))}
+                            >삭제</button>
                           </p>
                         </div>
                       </li>
@@ -95,8 +95,9 @@ export default function OrderList() {
                   <p>{wholePrice.toLocaleString()}원</p>
                 </div>
                 <button className='pay'>
-                  <p><FontAwesomeIcon icon={faCreditCard} /></p>                
-                  결제하기
+                    <p onClick={()=>{payTest()}}
+                    ><FontAwesomeIcon icon={faCreditCard} /></p>                
+                    결제하기
                 </button>
             </div>
           </div>
