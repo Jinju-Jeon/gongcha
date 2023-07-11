@@ -19,13 +19,13 @@ body{background-color: #eee;}
 
 .total{
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     p:nth-child(1){
-        font-size: 1.25rem;
+        font-size: 20px;
     }
     p:nth-child(2){
-        font-size: 1.5rem;
+        font-size: 24px;
         text-align: right;
     }
 }
@@ -88,7 +88,7 @@ body{background-color: #eee;}
         
             span{
                 display: block; margin: 5px 3px; padding: 10px 30px;
-                font-size: 1.75rem;
+                font-size: 28px;
                 border: 2px dashed #fff;
                 font-family: 'paybooc-Bold';
         
@@ -105,7 +105,6 @@ body{background-color: #eee;}
 
 .Menu{
     height: 100%;
-    background-color: default.$bg;
 
         
 
@@ -117,6 +116,7 @@ body{background-color: #eee;}
 
         >ul.category{
             width: 130px;
+            background-color: default.$bg;
             >li{
                 text-align: center;
                 padding: 10px 0;
@@ -135,21 +135,25 @@ body{background-color: #eee;}
 
     .center{
         .menu.container{
-            width: 760px;
+            width: 800px;
             height: 100%;
             padding: 0;
             box-sizing: border-box;
         }
 
         .row{
-            width: 100%;
+            width: 100%; height: 100%;
+            box-sizing: border-box;
             margin: 0;
+            padding: 15px 0;
             flex-wrap: wrap;
             align-content: flex-start;
+            background-color: #fff;
+            
         }
         .col{
             margin-bottom: 10px;
-            font-size: 0.9rem;
+            font-size: 14px;
             >div{
                 background-color: #fff;
                 border-radius: 5px;
@@ -170,13 +174,13 @@ body{background-color: #eee;}
     }
 
     .right{
-        width: 390px;
+        width: 350px;
         position: relative;
         background-color: default.$mainC;
 
         h1{
             padding: 10px 10px 5px;
-            font-size: 1.25rem;
+            font-size: 20px;
             font-family: default.$payb;
             color: #fff;
         }
@@ -188,11 +192,13 @@ body{background-color: #eee;}
             .order_list{
                 border-radius: 10px;
                 background-color: #fff;
+                height: 340px;
                 overflow-y: scroll;
                 &::-webkit-scrollbar{display: none;}
+                
 
                 li{
-                    height: 82px;
+                    height: 85px;
                     box-sizing: border-box;
                     padding: 5px;
                     position: relative;
@@ -237,8 +243,8 @@ body{background-color: #eee;}
                     height: 40px;
                     background-color: #fff;
                     color: default.$mainActive;
-                    font-size: 0.9rem;
-                    margin-right: 100px;
+                    font-size: 15px;
+                    margin-right: 50px;
 
                     svg{
                         margin-top: 7px;
@@ -248,7 +254,7 @@ body{background-color: #eee;}
                     background-color: #444;
                     color: #fff;
                     padding: 15px 10px;
-                    font-size: 1.5rem;
+                    font-size: 24px;
 
                     } ///pay
                 }//button
@@ -263,18 +269,18 @@ body{background-color: #eee;}
 .Option{
     h2{
         font-family: default.$payb;
-        font-size: 1.25rem;
+        font-size: 20px;
         margin: 10px auto 5px;
 
         span{
             margin-left: 10px;
-            font-size: 1.25rem;
+            font-size: 20px;
         }
     }
 
     .opt_cover{
         display: flex;
-        >div:nth-child(1){width: 980px;}
+        >div:nth-child(1){width: 860px;}
     }
     
     
@@ -286,66 +292,84 @@ body{background-color: #eee;}
 
         >div{
             box-sizing: border-box;
-            padding: 15px;
         }
 
         .info_img{
             width: 140px;
+            padding: 0px 15px;
 
             img{width: 100%;}
         }
 
         .info_txt{
+            width: 710px;
+            padding: 10px;
+            padding-right: 50px;
             >div{
                 display: flex;
                 justify-content: space-between;
 
                 margin-top: 10px;
-                font-size: 1.5rem;
+                font-size: 24px;
                 font-family: default.$payb;
 
                 p:nth-child(2){color: default.$mainActive;}                
             }//div
-            >p{color: default.$sub; font-size: 0.75rem;}
+            >p{
+                color: default.$sub; font-size: 0.75rem;
+
+                &:last-child{
+                    margin-top: 30px;
+                    text-align: right;
+                }
+            }
         }//info_txt
 
         .all_clear{
             font-size: 0.75rem;
-            position: absolute;
-            bottom: 20px; right: 10px;
             padding: 5px 10px;
             color: default.$mainC;
             border: 1px solid default.$mainC;
             border-radius: 10px;
+            
         }
     }//info
 
     .select_cover{
-        padding: 0 10px;
-
-        
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;        
 
 
         .select{
-            height: 160px;
+            width: 400px;
+            margin-bottom: 20px;
+            padding: 0 10px;
+
+            &:nth-child(2){margin-bottom: 0;}
 
             input[type=radio],input[type=checkbox]{display: none;}
 
+            &.select_topping label img{margin: -5px auto 0; width: 90%;}
 
             >ul{
                 display: flex;
+                flex-wrap: wrap;
+
                 li{
-                    width: 100px; height: 110px;
-                    box-sizing: border-box;
+                    width: 120px; height: 130px;
+                    padding: 0 5px;
+                    margin-bottom: 10px;
                     position: relative;
-                    margin-right: 10px;
                     &:last-child{margin-right: 0;}
 
-                    svg{font-size: 40px; margin: 10px 0 11px;}
+                    svg{font-size: 50px; margin: 10px 0 11px;
+                    }
 
                     label{
                         width: 100%; height: 100%;
-                        padding: 10px 20px;
+                        padding: 15px;
                         background-color: #fff;
                         border: 2px solid #fff;
                         border-radius: 5px;
@@ -363,102 +387,93 @@ body{background-color: #eee;}
                     font-family: default.$payb;
                 }//p
             }//ul
-        }}//select
-
-        .select_center{
-            display: flex;
-            >div:nth-child(1){margin-right: 50px;}
-        }
-            
+        }}//select            
 
 
     .item_total{
-        padding: 20px 0px;
-        width: 390px; height: 680px;
+        padding: 20px;
+        width: 420px; height: 680px;
         background-color: default.$mainC;    
         
         h2{
             padding: 0 10px 10px;
-            font-size: 1.75rem;
+            font-size: 24px;
             font-family: default.$payb;
             color: #fff;
         }
-
-        >div{display: flex;}
-
         
         .now_option{
-            width: 590px;
-            padding: 0 10px;
+            width: 100%;
+            padding: 0 10px 30px;
 
             ul{
-                border-radius: 10px;
+                width: 100%;
+                border-radius: 5px;
                 background-color: #fff;
                 overflow: hidden;
 
                 li{
-                    font-size: 1.25rem;
-                    padding: 10px 5px;
+                    padding: 5px;
                     &:nth-child(2n){
                         background-color: #eee;
                     }
 
-                    span{margin-right: 20px;}
+                    span{margin-right: 10px;}
                 }
             }
         }//now_option
 
         .order_detail{
-            width: 490px;
             padding: 0 20px;
             font-family: default.$payb;
             
             h4{
-                font-size: 1.25rem;
+                font-size: 20px;
                 color: #fff;
-            }
-
-            .quantity, .total, .btn_cover{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                margin-bottom: 5px;
             }
 
             .quantity{
                 color: #fff;
+                margin-bottom: 30px;
                 >p{display: flex;}
                 button{
-                    font-size: 1.25rem;
+                    font-size: 20px;
                     &:last-child{margin-left: 1px;}
                 }
                 .now_quant{
-                    font-size: 1.75rem;
+                    font-size: 28px;
                     width: 100px;
                     text-align: center;
 
                 }
             }
 
-            
+            .btn_cover{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 100px;
+            }
             button{
                 display: block;
                 border-radius: 10px;
 
                 &.add_other{
-                    font-size: 1.25rem;
                     padding: 0 10px;
                     background-color: #fff;
                     color: default.$mainC;
                     border: 3px solid default.$mainC;
-                    height: 60px;
-                    line-height: 60px;
+                    height: 40px;
+                    line-height: 40px;
+                    margin-right: 20px;
                 }
 
                 &.pay{
-                    font-size: 1.75rem;
+                    font-size: 24px;
                     background-color: #444;
                     color: #fff;
-                    padding: 25px 40px;
+                    padding: 15px 20px;
                 }
             }//button
 
@@ -481,7 +496,7 @@ body{background-color: #eee;}
     h1{
         padding: 0 5px;
         margin: 30px 0 10px;
-        font-size: 2rem;
+        font-size: 16px;
         font-family: default.$payb;
     }
     .pay_list{
@@ -516,7 +531,7 @@ body{background-color: #eee;}
             }
 
             .info_top{
-                font-size: 1.25rem;
+                font-size: 20px;
                 font-family: default.$payb;
                 display: flex;
                 justify-content: space-between;
@@ -549,11 +564,11 @@ body{background-color: #eee;}
         margin-bottom: 30px;
         
         p:nth-child(1){
-            font-size: 1.5rem;
+            font-size: 24px;
             font-family: default.$payb;
             color: default.$mainActive;
 
-            span{font-size: 2rem; padding-right: 5px;}
+            span{font-size: 16px; padding-right: 5px;}
         }
         p:nth-child(2){
             color: #555;
@@ -565,7 +580,7 @@ body{background-color: #eee;}
     }//pay_total
 
     .membership{
-        font-size: 1.75rem;
+        font-size: 28px;
         text-align: center;
 
         button{

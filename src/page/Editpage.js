@@ -177,6 +177,9 @@ export default function Editpage() {
       <div className='back'>
         <p onClick={()=>(navigate(-1))}><FontAwesomeIcon icon={faArrowLeft} />이전화면으로</p>
       </div>
+      <div className='opt_cover'>
+
+    <div>
       <div className='info'>
         <div className='info_img'>
           <img src={process.env.PUBLIC_URL + item.img} />
@@ -187,15 +190,18 @@ export default function Editpage() {
             <p>{item.price.toLocaleString()}</p>
           </div>
           <p>{item.desc}</p>
-          <button className='all_clear'
-            onClick={()=>(chkClear())}
-          >전체 선택 해제</button>
+          <p>
+            <button className='all_clear'
+              onClick={()=>(chkClear())}
+            >전체 선택 해제</button>
+          </p>
         </div>{/* info_txt */}
       </div>{/* info */}
 
       <div className='select_cover'>
-        <div className='select select_cup'>
-          <h2>컵 선택</h2>
+        <div className='select_left'>
+          <div className='select select_cup'>
+            <h2>1. 컵 선택</h2>
           <ul>
             <li>
               <label htmlFor='cup_1' className={0===cupSelect ? "checked" : ""}>
@@ -226,48 +232,51 @@ export default function Editpage() {
             </li>
             
           </ul>
-        </div>
+          </div>
 
-        <div className='select select_ice'>
-          <h2>얼음량</h2>
-        <ul>
-          {item.ice.map((opt,i)=>{
-            return(
-              <li key={i}>
-                <label htmlFor={'ice_'+opt} className={iceSelect == opt ? "checked" : ""}
-                  onClick={(e)=>{iceAction(e)}}
-                >
-                <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt} ></input>
-                  <img src={process.env.PUBLIC_URL + '/img/ice_'+opt+'.png'}></img>
-                  <p>{iceTxt[opt]}</p>
-                  </label>
-              </li>
-              )
-          })}
-          </ul>
-        </div>
 
-        <div className='select select_sugar'>
-          <h2>당도</h2>
-        <ul>
-          {item.sugar.map((opt,i)=>{
-            return(
-              <li key={i}>
-                <label htmlFor={'sugar_'+opt} className={opt == sugarSelect ? 'checked' : ' '}
-                  onClick={(e)=>(sugarAction(e))}
-                >
-                <input type="radio" name={'sugarOpt'} id={'sugar_'+opt} value={opt}></input>
-                  <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.png'}></img>
-                  <p>{opt}%</p>
-                  </label>
-              </li>
-              )
-          })}
-          </ul>
-        </div>
+          <div className='select select_sugar'>
+              <h2>2. 당도</h2>
+              <ul>
+                {item.sugar.map((opt,i)=>{
+                  return(
+                    <li key={i}>
+                      <label htmlFor={'sugar_'+opt} className={opt == sugarSelect ? 'checked' : ' '}
+                        onClick={(e)=>(sugarAction(e))}
+                      >
+                      <input type="radio" name={'sugarOpt'} id={'sugar_'+opt} value={opt}></input>
+                        <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.png'}></img>
+                        <p>{opt}%</p>
+                        </label>
+                    </li>
+                    )
+                })}
+                </ul>        
+            </div>
+          </div>
+        
+        <div className='select_right'>
+          <div className='select select_ice'>
+            <h2>3. 얼음량</h2>
+          <ul>
+            {item.ice.map((opt,i)=>{
+              return(
+                <li key={i}>
+                  <label htmlFor={'ice_'+opt} className={iceSelect == opt ? "checked" : ""}
+                    onClick={(e)=>{iceAction(e)}}
+                  >
+                  <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt} ></input>
+                    <img src={process.env.PUBLIC_URL + '/img/ice_'+opt+'.png'}></img>
+                    <p>{iceTxt[opt]}</p>
+                    </label>
+                </li>
+                )
+            })}
+            </ul>
+          </div>
 
-        <div className='select select_topping'>
-          <h2>추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
+          <div className='select select_topping'>
+            <h2>4. 추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
           <ul>
             {
               toppingTxt.map((item,i)=>{
@@ -306,20 +315,20 @@ export default function Editpage() {
 
               })//map-end
             }
-          </ul>
+          </ul>          
+          </div>
         </div>
-
-
       </div>
+
+    </div>
       
       <div className='item_total'>
           <h2>주문 확인</h2>
-          <div>
             <div className='now_option'>
               <ul>
                 <li><b>컵: </b>{cupTxt[cupSelect]}</li>
-                <li><b>얼음: </b>{iceTxt[iceSelect]}</li>
                 <li><b>당도: </b>{sugarSelect===-1 ? "" : sugarSelect+"%" }</li>
+                <li><b>얼음: </b>{iceTxt[iceSelect]}</li>
                 <li>
                   <b>추가 토핑: </b>
                   {
@@ -359,7 +368,7 @@ export default function Editpage() {
                 >바로결제</button>
               </div>
             </div>
-          </div>
+      </div>
       </div>
 
     </div>

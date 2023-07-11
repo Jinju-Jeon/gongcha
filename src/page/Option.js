@@ -199,20 +199,21 @@ export default function Option() {
             <p>{item.price.toLocaleString()}</p>
           </div>
           <p>{item.desc}</p>
-          <button className='all_clear'
-            onClick={()=>(chkClear())}
-          >전체 선택 해제</button>
+          <p>
+            <button className='all_clear'
+              onClick={()=>(chkClear())}
+            >전체 선택 해제</button>
+          </p>
         </div>{/* info_txt */}
       </div>{/* info */}
 
       <div className='select_cover'>
-
-        <div className='select_center'>
-        <div className='select select_cup'>
-          <h2>1. 컵 선택</h2>
+        <div className='select_left'>
+          <div className='select select_cup'>
+            <h2>1. 컵 선택</h2>
           <ul>
             <li>
-              <label htmlFor='cup_1'>
+              <label htmlFor='cup_1' className={0===cupSelect ? "checked" : ""}>
                 <input type="radio" name="cupOpt" id="cup_1" value={0}
                   onChange={(e)=>{cupAction(e)}}
                 />
@@ -221,7 +222,7 @@ export default function Option() {
               </label>
             </li>
             <li>
-              <label htmlFor='cup_2'>
+              <label htmlFor='cup_2' className={1===cupSelect ? "checked" : ""}>
                 <input type="radio" name="cupOpt" id="cup_2" value={1}
                   onChange={(e)=>{cupAction(e)}}
                 />
@@ -230,7 +231,7 @@ export default function Option() {
               </label>
             </li>
             <li>
-              <label htmlFor='cup_3'>
+              <label htmlFor='cup_3' className={2 === Number(cupSelect) ? "checked" : ""}>
                 <input type="radio" name="cupOpt" id="cup_3" value={2}
                   onChange={(e)=>{cupAction(e)}}
                 />
@@ -240,15 +241,37 @@ export default function Option() {
             </li>
             
           </ul>
-        </div>
+          </div>
 
+
+          <div className='select select_sugar'>
+              <h2>2. 당도</h2>
+              <ul>
+                {item.sugar.map((opt,i)=>{
+                  return(
+                    <li key={i}>
+                      <label htmlFor={'sugar_'+opt} className={opt == sugarSelect ? 'checked' : ' '}
+                        onClick={(e)=>(sugarAction(e))}
+                      >
+                      <input type="radio" name={'sugarOpt'} id={'sugar_'+opt} value={opt}></input>
+                        <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.png'}></img>
+                        <p>{opt}%</p>
+                        </label>
+                    </li>
+                    )
+                })}
+                </ul>        
+            </div>
+          </div>
+        
+        <div className='select_right'>
           <div className='select select_ice'>
-            <h2>2. 얼음량</h2>
+            <h2>3. 얼음량</h2>
           <ul>
             {item.ice.map((opt,i)=>{
               return(
                 <li key={i}>
-                  <label htmlFor={'ice_'+opt} className={iceSelect === opt ? 'checked' : ' '}
+                  <label htmlFor={'ice_'+opt} className={iceSelect == opt ? "checked" : ""}
                     onClick={(e)=>{iceAction(e)}}
                   >
                   <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt} ></input>
@@ -261,51 +284,48 @@ export default function Option() {
             </ul>
           </div>
 
-        </div>
-          
-          <div className='select select_sugar'>
-            <h2>3. 당도</h2>
-          <ul>
-            {item.sugar.map((opt,i,arr)=>{
-              return(
-                <li key={i}>
-                  <label htmlFor={'sugar_'+opt} className={arr.length === 1 ? 'checked' : ' '}
-                    onClick={(e)=>(sugarAction(e))}
-                  >
-                  <input type="radio" name={'sugarOpt'} id={'sugar_'+opt} value={opt}></input>
-                    <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.png'}></img>
-                    <p>{opt}%</p>
-                    </label>
-                </li>
-                )
-            })}
-            </ul>
-          
-          </div>
-
-        <div className='select select_topping'>
-          <h2>4. 추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
+          <div className='select select_topping'>
+            <h2>4. 추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
           <ul>
             {
               toppingTxt.map((item,i)=>{
-                return(
-                <li key={i}>
-                  <label>
-                    <input type="checkbox" name="topOpt" id={"top"+i} value={i}
-                      onChange={(e)=>{toppingAction(e)}}
-                    />
-                    <img src={process.env.PUBLIC_URL + '/img/top'+i+'.gif'}></img>
-                    <p>
-                      {item.name}<br/>
-                      (+{item.price}원)
-                    </p> 
-                  </label>
-                </li>
-                ) ///map-return
-              })
-            }
-          </ul>
+                if(topSelect[i]===1){
+                  return(
+                    <li key={i}>
+                      <label className="checked">
+                        <input type="checkbox" name="topOpt" id={"top"+i} value={i} 
+                          onChange={(e)=>{toppingAction(e)}} checked
+                        />
+                        <img src={process.env.PUBLIC_URL + '/img/top'+i+'.gif'}></img>
+                        <p>
+                          {item.name}<br/>
+                          (+{item.price}원)
+                        </p> 
+                      </label>
+                    </li>
+                  )
+                } else{
+                  return(
+                  <li key={i}>
+                    <label className={""}>
+                      <input type="checkbox" name="topOpt" id={"top"+i} value={i} 
+                        onChange={(e)=>{toppingAction(e)}}
+                      />
+                      <img src={process.env.PUBLIC_URL + '/img/top'+i+'.gif'}></img>
+                      <p>
+                        {item.name}<br/>
+                        (+{item.price}원)
+                      </p> 
+                    </label>
+                  </li>
+                  ) ///map-return
 
+                }
+
+              })//map-end
+            }
+          </ul>          
+          </div>
         </div>
       </div>
 
@@ -313,12 +333,11 @@ export default function Option() {
       
       <div className='item_total'>
           <h2>주문 확인</h2>
-          <div>
             <div className='now_option'>
               <ul>
                 <li><b>컵: </b>{cupTxt[cupSelect]}</li>
-                <li><b>얼음: </b>{iceTxt[iceSelect]}</li>
                 <li><b>당도: </b>{sugarSelect===-1 ? "" : sugarSelect+"%" }</li>
+                <li><b>얼음: </b>{iceTxt[iceSelect]}</li>
                 <li>
                   <b>추가 토핑: </b>
                   {
@@ -358,9 +377,7 @@ export default function Option() {
                 >바로결제</button>
               </div>
             </div>
-          </div>
       </div>
-
       </div>
 
     </div>

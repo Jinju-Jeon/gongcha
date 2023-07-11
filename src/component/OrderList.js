@@ -25,8 +25,8 @@ export default function OrderList() {
 
 
   let liShape = []
-  if(nowOrder.length<5){
-    liShape = Array(5-nowOrder.length).fill('')    
+  if(nowOrder.length<4){
+    liShape = Array(4-nowOrder.length).fill('')    
   }
 
   function payTest(){
@@ -64,8 +64,8 @@ export default function OrderList() {
                     <div>
                       <p>
                         {cupTxt[el.cup]} - 
-                        얼음:{iceTxt[el.ice]} - 
-                        당도:{el.sugarSelect}%<br/>
+                        당도:{el.sugarSelect}% - 
+                        얼음:{iceTxt[el.ice]}<br/>
                         토핑:{topTxt.length===0 ? " 없음" : 
                         topTxt.map((element,j,arr) => (
                           <span key={j}>{element.name}{j===arr.length-1? "" : ", "}</span>
