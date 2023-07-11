@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhiskeyGlass, faMugSaucer } from '@fortawesome/free-solid-svg-icons'
-import { faArrowLeft, faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faCircleMinus, faCirclePlus, faCreditCard } from '@fortawesome/free-solid-svg-icons'
 
 
 import { addItem } from '../data/store'
@@ -374,7 +374,7 @@ export default function Option() {
                 <button className='pay' onClick={()=>{
                   storing('/pay')
                 }}
-                >바로결제</button>
+                ><FontAwesomeIcon icon={faCreditCard} />바로결제</button>
               </div>
             </div>
       </div>

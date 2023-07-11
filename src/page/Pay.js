@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faCreditCard } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -21,8 +21,8 @@ export default function Pay() {
     const state = useSelector(state=>state).order
 
     let liShape = []
-    if(state.length<6){
-        liShape = Array(6-state.length).fill('')
+    if(state.length<4){
+        liShape = Array(4-state.length).fill('')
     }
 
 
@@ -80,68 +80,71 @@ export default function Pay() {
         <div className='back'>
           <p onClick={()=>(navigate('/menu/newseason'))}><FontAwesomeIcon icon={faArrowLeft} />이전화면으로</p>
         </div>
-        <h1>주문 내역</h1>
         <div className='pay_inner'>
-        <ul className='pay_list'>
-        {state.map((el,i)=>{
-            const topNow = toppingTxt.filter((element,i)=>(el.topping[i]===1))            
-            return (
-            <li key={i}>
-                <div>
-                    <div>
-                        <img src={process.env.PUBLIC_URL + el.item.img} />
-                    </div>
-                    <div>
-                        <div className='info_top'>
-                            <p>{i+1} {el.item.name}</p>
-                            <p>{el.onePrice.toLocaleString()}원</p>
-                        </div>
-                        <div className='selected_opt'>
-                            <p>
-                                <b>옵션: </b>
-                                {cupTxt[el.cup]} 
-                                 - {iceTxt[el.ice]} 
-                                 - {el.sugarSelect}% 
-                                 - {topNow.length>0 ? 
-                                    topNow.map((topp,j)=>(<span key={j}>{topp.name}</span>))
-                                    : <span>없음</span>}
-                                - 수량: {el.quant}
-                            </p>
-                            <p className='button_cover'>
-                                <button
-                                  onClick={()=>(navigate('/editpage',{state: {index: i, editted: el}}))}
-                                >수정</button>
-                                <button className='delete'
-                                  onClick={()=>(dispatch(deleteItem(i)))}
-                                >삭제</button>                                
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </li>) ////map
-        }
-        )}
-        {state.length<6 ? 
-            liShape.map((e,k)=>(<li key={k}></li>))
-        : "아니요"}
-
-        </ul>
-
-        <div className='pay_total'>
-            <p>총 <span>{(wholePrice*discount).toLocaleString()}원 </span></p>
-            <p className='m_apply'>*멤버십 미적용</p>
-        </div>
+            <div className='pay_left'>
+                <h1>주문 내역</h1>
+                <ul className='pay_list'>
+                    {state.map((el,i)=>{
+                    const topNow = toppingTxt.filter((element,i)=>(el.topping[i]===1))            
+                        return (
+                        <li key={i}>
+                            <div>
+                                <div>
+                                    <img src={process.env.PUBLIC_URL + el.item.img} />
+                                </div>
+                                <div>
+                                    <div className='info_top'>
+                                        <p>{i+1}. {el.item.name}</p>
+                                        <p>{el.onePrice.toLocaleString()}원</p>
+                                    </div>
+                                    <div className='selected_opt'>
+                                        <p>
+                                            <b>옵션: </b>
+                                            {cupTxt[el.cup]} 
+                                                - {iceTxt[el.ice]} 
+                                                - {el.sugarSelect}% 
+                                                - {topNow.length>0 ? 
+                                                topNow.map((topp,j)=>(<span key={j}>{topp.name}</span>))
+                                                : <span>없음</span>}
+                                            - 수량: {el.quant}
+                                        </p>
+                                        <p className='button_cover'>
+                                            <button
+                                                onClick={()=>(navigate('/editpage',{state: {index: i, editted: el}}))}
+                                            >수정</button>
+                                            <button className='delete'
+                                                onClick={()=>(dispatch(deleteItem(i)))}
+                                            >삭제</button>                                
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>) ////map
+                    }
+                    )}
+                    {state.length<4 ? 
+                        liShape.map((e,k)=>(<li key={k}></li>))
+                    : "" }
+                </ul>
+            </div>
         
-        <div className='membership'>
-            <button onClick={()=>{
-                discountChk()
-            }}>멤버십 할인</button>
-            <button
-                onClick={()=>{payed()}}
-            >결제하기</button>
+            <div className='pay_right'>
+                <div className='pay_total'>
+                    <p>총<span>{(wholePrice*discount).toLocaleString()}원 </span></p>
+                    <p className='m_apply'>*멤버십 미적용</p>
+                </div>
 
-        </div>
+                <div className='membership'>
+                    <button onClick={()=>{
+                        discountChk()
+                    }}>멤버십 할인</button>
+                    <button
+                        onClick={()=>{payed()}}
+                    ><FontAwesomeIcon icon={faCreditCard} />결제하기</button>
 
+                </div>
+
+                </div>
         </div> {/* inner */}
 
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} className='m_modal'>

@@ -8,13 +8,6 @@
 html{font-size: 16px;}
 body{font-size: 16px;font-family: 'Noto Sans KR'; color: #333;}
 
-$payb: 'paybooc-Bold';
-
-
-$mainC: #cf3e58;
-$mainActive: #b31a36;
-$sub: #ae8689;
-$bg: #fdf8f2;
 
 /* 세팅 */
 *,ul,ol,p,h1,h2,h3,h4,h5,h6, ul, li, a{
@@ -31,11 +24,9 @@ img{width: 100%; display: block;}
 button{
     border: none;
     background: none;
-    font-family: $payb;
+    font-family: 'paybooc-Bold';
 }
 
-
-.App{width: 1280px; height: 720px; background-color: $bg; position: relative; margin: 0 auto; background-color: #ddd;}
 
 
 .container{
