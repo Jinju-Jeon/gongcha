@@ -186,6 +186,9 @@ export default function Option() {
       <div className='back'>
         <p onClick={()=>(navigate(-1))}><FontAwesomeIcon icon={faArrowLeft} />이전화면으로</p>
       </div>
+      <div className='opt_cover'>
+
+    <div>
       <div className='info'>
         <div className='info_img'>
           <img src={process.env.PUBLIC_URL + item.img} />
@@ -203,8 +206,10 @@ export default function Option() {
       </div>{/* info */}
 
       <div className='select_cover'>
+
+        <div className='select_center'>
         <div className='select select_cup'>
-          <h2>컵 선택</h2>
+          <h2>1. 컵 선택</h2>
           <ul>
             <li>
               <label htmlFor='cup_1'>
@@ -237,47 +242,49 @@ export default function Option() {
           </ul>
         </div>
 
-        <div className='select select_ice'>
-          <h2>얼음량</h2>
-        <ul>
-          {item.ice.map((opt,i)=>{
-            return(
-              <li key={i}>
-                <label htmlFor={'ice_'+opt} className={iceSelect === opt ? 'checked' : ' '}
-                  onClick={(e)=>{iceAction(e)}}
-                >
-                <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt} ></input>
-                  <img src={process.env.PUBLIC_URL + '/img/ice_'+opt+'.png'}></img>
-                  <p>{iceTxt[opt]}</p>
-                  </label>
-              </li>
-              )
-          })}
-          </ul>
-        </div>
-
-        <div className='select select_sugar'>
-          <h2>당도</h2>
-        <ul>
-          {item.sugar.map((opt,i,arr)=>{
-            return(
-              <li key={i}>
-                <label htmlFor={'sugar_'+opt} className={arr.length === 1 ? 'checked' : ' '}
-                  onClick={(e)=>(sugarAction(e))}
-                >
-                <input type="radio" name={'sugarOpt'} id={'sugar_'+opt} value={opt}></input>
-                  <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.png'}></img>
-                  <p>{opt}%</p>
-                  </label>
-              </li>
-              )
-          })}
-          </ul>
+          <div className='select select_ice'>
+            <h2>2. 얼음량</h2>
+          <ul>
+            {item.ice.map((opt,i)=>{
+              return(
+                <li key={i}>
+                  <label htmlFor={'ice_'+opt} className={iceSelect === opt ? 'checked' : ' '}
+                    onClick={(e)=>{iceAction(e)}}
+                  >
+                  <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt} ></input>
+                    <img src={process.env.PUBLIC_URL + '/img/ice_'+opt+'.png'}></img>
+                    <p>{iceTxt[opt]}</p>
+                    </label>
+                </li>
+                )
+            })}
+            </ul>
+          </div>
 
         </div>
+          
+          <div className='select select_sugar'>
+            <h2>3. 당도</h2>
+          <ul>
+            {item.sugar.map((opt,i,arr)=>{
+              return(
+                <li key={i}>
+                  <label htmlFor={'sugar_'+opt} className={arr.length === 1 ? 'checked' : ' '}
+                    onClick={(e)=>(sugarAction(e))}
+                  >
+                  <input type="radio" name={'sugarOpt'} id={'sugar_'+opt} value={opt}></input>
+                    <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.png'}></img>
+                    <p>{opt}%</p>
+                    </label>
+                </li>
+                )
+            })}
+            </ul>
+          
+          </div>
 
         <div className='select select_topping'>
-          <h2>추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
+          <h2>4. 추가 토핑<span>(선택사항 / 최대 3개)</span></h2>
           <ul>
             {
               toppingTxt.map((item,i)=>{
@@ -301,6 +308,8 @@ export default function Option() {
 
         </div>
       </div>
+
+    </div>
       
       <div className='item_total'>
           <h2>주문 확인</h2>
@@ -350,6 +359,8 @@ export default function Option() {
               </div>
             </div>
           </div>
+      </div>
+
       </div>
 
     </div>

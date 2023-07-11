@@ -10,7 +10,7 @@ export default function List(props) {
     <Row>
         {list.map((item,i)=>{
             return(
-            <Col className='col' lg={1} key={i}>
+            <Col className='col' lg={2} key={i}>
                 <Link to={'/option/'+item.id} state={{menu: item}}>
                     <img src={process.env.PUBLIC_URL + item.img}/>
                     <p className='name'>{item.name}</p>

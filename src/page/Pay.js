@@ -25,12 +25,11 @@ export default function Pay() {
         liShape = Array(6-state.length).fill('')
     }
 
-    let tempPrice = 0;
-    state.forEach((item)=>{
-        tempPrice+=item.onePrice
-    })
 
-    const [totalPrice,setPrice] = useState(tempPrice)
+    let wholePrice = 0
+    state.forEach((el)=>(wholePrice+=el.onePrice))
+
+    
 
 
     //modal
@@ -42,9 +41,9 @@ export default function Pay() {
     const [nowPw,setPw] = useState('')
     
     
-    const [discount,setDiscount] = useState(0)
+    const [discount,setDiscount] = useState(1)
     function discountChk(){
-        if(discount===1){
+        if(discount===0.9){
             alert('이미 할인이 적용되었습니다.')
         } else{
             handleShow()
@@ -56,9 +55,9 @@ export default function Pay() {
     function pwChk (){
 
         if(memberList.includes(nowPw)){
-            setDiscount(1)
+            setDiscount(0.9)
             alert('아이디가 존재합니다. 할인이 적용됩니다.')
-            setPrice(totalPrice*0.9)
+            
             document.querySelector('.m_apply').classList.add('on')
             document.querySelector('.m_apply').innerText = '*멤버십 적용'
             handleClose()
@@ -71,7 +70,7 @@ export default function Pay() {
 
 
     function payed(){
-        alert('총 '+totalPrice.toLocaleString()+'원 주문 완료 되었습니다. 메인 화면으로 돌아갑니다.')
+        alert('총'+(wholePrice*discount).toLocaleString()+'원 주문 완료 되었습니다. 메인 화면으로 돌아갑니다.')
         dispatch(deleteAll())
         navigate('/')
     }
@@ -129,7 +128,7 @@ export default function Pay() {
         </ul>
 
         <div className='pay_total'>
-            <p>총 <span>{totalPrice.toLocaleString()} 원 </span></p>
+            <p>총 <span>{(wholePrice*discount).toLocaleString()}원 </span></p>
             <p className='m_apply'>*멤버십 미적용</p>
         </div>
         
@@ -147,7 +146,7 @@ export default function Pay() {
 
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} className='m_modal'>
         <Modal.Header closeButton>
-          <Modal.Title>멤버십 할인</Modal.Title>
+          <Modal.Title>멤버십 할인(10%)</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>할인을 적용하려면 멤버 아이디 4자리를 입력해주세요</p>

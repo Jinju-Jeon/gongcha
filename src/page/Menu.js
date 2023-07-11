@@ -14,6 +14,7 @@ export default function Menu() {
   return (
     <div className='Menu'>
       <div className='back'><Link to ='/'><FontAwesomeIcon icon={faHouse} />메인화면으로</Link></div>
+      <div className='menu_inner'>
         <ul className='category'>
           <li className={nowPath==='newseason' ? 'on' : ''}><Link to='newseason'>NEW 시즌</Link></li>
           <li className={nowPath==='best' ? 'on' : ''}><Link to='best'>베스트 콤비</Link></li>
@@ -26,10 +27,10 @@ export default function Menu() {
           <li className={nowPath==='coffee' ? 'on' : ''}><Link to='coffee'>커피</Link></li>
         </ul>
         <div className='center'>
-          <Outlet></Outlet>
-          
+          <Outlet></Outlet>         
         </div>
         <OrderList />
+      </div>
         
 
     </div>

@@ -11,19 +11,33 @@ export default function Home() {
     <div className='Home'>
         <Carousel fade={true}>
         <Carousel.Item>
-          <img src={process.env.PUBLIC_URL + '/img/main1.jpg'} alt="공차×흑요석 구매인증 EVENT" />
+          <div>
+            <img src={process.env.PUBLIC_URL + '/img/main1.jpg'} alt="공차×흑요석 구매인증 EVENT" />
+          </div>
         </Carousel.Item>
         <Carousel.Item>
-          <img src={process.env.PUBLIC_URL + '/img/main2.jpg'} alt="K-밀크티 쫀득 약과·초당 옥수수" />
+          <div>
+            <img src={process.env.PUBLIC_URL + '/img/main2.jpg'} alt="K-밀크티 쫀득 약과·초당 옥수수" />
+          </div>
         </Carousel.Item>
         <Carousel.Item>
-          <img src={process.env.PUBLIC_URL + '/img/main3.jpg'} alt="BEST COMBINATION" />
+          <div>
+            <img src={process.env.PUBLIC_URL + '/img/main3.jpg'} alt="BEST COMBINATION" />
+          </div>
         </Carousel.Item>
         <Carousel.Item>
-          <img src={process.env.PUBLIC_URL + '/img/main4.jpg'} alt="2023 대한민국 브랜드 명예의 전당 '프리미엄 티 전문점' 부문 대상 수상 " />
+          <div>
+            <img src={process.env.PUBLIC_URL + '/img/main4.jpg'} alt="2023 대한민국 브랜드 명예의 전당 '프리미엄 티 전문점' 부문 대상 수상 " />
+          </div>
         </Carousel.Item>
       </Carousel>
-      <Link to='/menu/newseason'><Button className='intro_btn'><span>주문하기<FontAwesomeIcon icon={faChevronRight} /></span></Button></Link>
+      <div>
+        
+      </div>
+        <div className='logo'>
+          <img src={process.env.PUBLIC_URL +'/img/logo.png'}/>
+          <Link to='/menu/newseason'><Button className='intro_btn'><span>주문하기<FontAwesomeIcon icon={faChevronRight} /></span></Button></Link>
+        </div>
     </div>
   )
 }

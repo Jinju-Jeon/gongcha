@@ -1,12 +1,11 @@
 @use '/src/default.scss';
 
-
+body{background-color: #eee;}
 
 .back{
     padding-left: 10px;
-    height: 50px; line-height: 50px;
+    height: 40px; line-height: 40px;
     font-family: default.$payb;
-    font-size: 1.25rem;
     background-color: default.$sub;
     color: #fff;
 
@@ -19,22 +18,28 @@
 
 
 .total{
-    margin: 30px 0 30px;
     color: #fff;
+    margin-bottom: 20px;
+
     p:nth-child(1){
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     p:nth-child(2){
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         text-align: right;
     }
 }
 
 .Home{
+    display: flex;
     .carousel{
+        width: 720px;
+
         .carousel-item{
             transition: .3s;
-            height: 1920px;
+
+            >div{width: 720px;}
+
             &:nth-child(1){background: #fefad4;}
             &:nth-child(2){background: linear-gradient(90deg,#f2c627,#d9c242,#91a83c);}
             &:nth-child(3){background: #e5dcca;}
@@ -42,7 +47,6 @@
         }
         
         .carousel-control-prev,.carousel-control-next{
-            height: 1202px;
             
             .carousel-control-next-icon,
             .carousel-control-prev-icon{
@@ -58,62 +62,94 @@
             .carousel-indicators{display: none;}
     }
     
-    .intro_btn{
-        
-        position: absolute;
-        left: 50%; bottom: 300px;
-        transform: translateX(-50%);
-        z-index: 9;
-        background-color: default.$mainC;
-        border: none;
-        
-        &:hover,&.btn:active,:not(&.btn-check)+&.btn:active,&.btn:focus-visible{
-            background-color: default.$mainActive;
+
+    .logo{
+        position: relative;
+        width: 560px;
+        background-color: default.$bg;
+        padding-top: 150px;
+
+        img{
+            width: 300px;
+            margin: 0 auto;
         }
-    
-        span{
-            display: block; margin: 15px 20px; padding: 15px 40px;
-            font-size: 60px;
-            border: 3px dashed #fff;
-            font-family: 'paybooc-Bold';
-    
-            svg{margin-left: 20px; margin-bottom: -5px;}
+
+        .intro_btn{        
+            display: block;
+
+
+            margin: 0 auto;
+            background-color: default.$mainC;
+            border: none;
+            
+            &:hover,&.btn:active,:not(&.btn-check)+&.btn:active,&.btn:focus-visible{
+                background-color: default.$mainActive;
+            }
+        
+            span{
+                display: block; margin: 5px 3px; padding: 10px 30px;
+                font-size: 1.75rem;
+                border: 2px dashed #fff;
+                font-family: 'paybooc-Bold';
+        
+                svg{margin-left: 20px; margin-bottom: -5px;}
+            }
         }
-    }
+
+        img{
+            width: 300px;
+        }
+
+    }//logo
 }
 
 .Menu{
+    height: 100%;
+    background-color: default.$bg;
 
-    >ul.category{
+        
+
+
+
+    .menu_inner{
         display: flex;
-        flex-wrap: wrap;
+        height: 680px;
 
-        >li{
-            width: 20%;
-            text-align: center;
-            font-size: 1.75rem;
-            padding: 15px 0;
-            font-family: 'paybooc-Bold';
-            color: default.$sub;
-
-            &.on{
-                color: default.$mainC
+        >ul.category{
+            width: 130px;
+            >li{
+                text-align: center;
+                padding: 10px 0;
+    
+                font-family: 'paybooc-Bold';
+                color: default.$sub;
+    
+                &.on{
+                    color: #fff;
+                    background-color: #333;
+                }
             }
+        }////ul
+    }
 
-
-        }
-    }////ul
 
     .center{
+        .menu.container{
+            width: 760px;
+            height: 100%;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         .row{
+            width: 100%;
+            margin: 0;
             flex-wrap: wrap;
             align-content: flex-start;
-
         }
         .col{
-            width: 20%;
             margin-bottom: 10px;
-            flex-shrink: 0;
+            font-size: 0.9rem;
             >div{
                 background-color: #fff;
                 border-radius: 5px;
@@ -123,117 +159,102 @@
         }
 
         p{
-            font-size: 1.25rem;
+            
             text-align: center;
             &.name{
-                height: 4rem;
                 color: default.$mainC;
                 font-weight: bold;
                 word-break: keep-all;
             }
-            &.price{}
         }
     }
 
-    .bottom{
-        position: absolute; bottom: 0;
-        padding: 20px 0px;
-        width: 100%;
-        border-radius: 10px 10px  0 0;
+    .right{
+        width: 390px;
+        position: relative;
         background-color: default.$mainC;
 
         h1{
-            padding: 0 10px;
-            font-size: 2rem;
+            padding: 10px 10px 5px;
+            font-size: 1.25rem;
             font-family: default.$payb;
             color: #fff;
         }
 
-        >div{display: flex;}
-
         .order_cover{
-            width: 880px;
             box-sizing: border-box;
             padding: 10px;
 
             .order_list{
                 border-radius: 10px;
                 background-color: #fff;
-                height: 475px;
                 overflow-y: scroll;
                 &::-webkit-scrollbar{display: none;}
 
                 li{
-                    font-size: 1rem;
-                    height: 95px;
+                    height: 82px;
                     box-sizing: border-box;
-                    padding: 10px 5px;
+                    padding: 5px;
                     position: relative;
+                    &:nth-child(2n){background-color: #eee;}
+
                     >div{
                         display: flex;
                         justify-content: space-between;
                         margin-bottom: 5px;
 
-                        .li_top{
-                            
-                            padding-right: 10px;
-                        }
-
+                        
                         button{
-                            font-size: 1rem;
-                            margin-right: 15px;
+                            margin-right: 10px;
+                            font-size: 0.75rem;
                             &:last-child{color: default.$mainC;}
                         }
-
-                        &:first-child{font-size: 1.25rem;}
-                    }
-
-                    &:nth-child(2n){background-color: #eee;}
-                }
-
-                
-            }
-        }
+                        
+                        &:nth-child(2){
+                            font-size: 0.75rem;
+                        }
+                    }//div
+                }//li
+            }//order_list
+        }//order_cover
 
         .menu_btn{
             padding: 10px;
             font-family: default.$payb;
-            
+
+            .btn_cover{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
             button{
                 display: block;
-                width: 160px;     
+                padding: 0 10px;
                 border-radius: 10px;
                 
                 &.delete{
-                    height: 50px;
+                    height: 40px;
                     background-color: #fff;
                     color: default.$mainActive;
-                    font-size: 1.25rem;
+                    font-size: 0.9rem;
+                    margin-right: 100px;
 
                     svg{
                         margin-top: 7px;
                     }
                 }
                 &.pay{
-                    font-size: 1.75rem;
-
                     background-color: #444;
                     color: #fff;
                     padding: 15px 10px;
+                    font-size: 1.5rem;
 
-                    p{
-                        svg{
-                            display: block;
-                            margin: 0 auto 15px;
-                            font-size: 4rem;
-                        }
+                    } ///pay
+                }//button
+                
+            }//btn_cover
 
-                        border-bottom: 2px solid #fff;
-                        margin-bottom: 15px;
-
-                    }
-                }
-            }            
 
         }////menu_btn
     }//bottom
@@ -242,8 +263,8 @@
 .Option{
     h2{
         font-family: default.$payb;
-        font-size: 1.75rem;
-        margin-bottom: 5px;
+        font-size: 1.25rem;
+        margin: 10px auto 5px;
 
         span{
             margin-left: 10px;
@@ -251,8 +272,15 @@
         }
     }
 
+    .opt_cover{
+        display: flex;
+        >div:nth-child(1){width: 980px;}
+    }
+    
     
     .info{
+        position: relative;
+        height: 150px;
         display: flex;
         background-color: #fff;
 
@@ -262,26 +290,29 @@
         }
 
         .info_img{
-            margin-left: 40px;
-            width: 260px;}
+            width: 140px;
+
+            img{width: 100%;}
+        }
 
         .info_txt{
-            width: 620px;
             >div{
                 display: flex;
                 justify-content: space-between;
 
                 margin-top: 10px;
-                font-size: 2rem;
+                font-size: 1.5rem;
                 font-family: default.$payb;
 
                 p:nth-child(2){color: default.$mainActive;}                
             }//div
-            >p{color: default.$sub;}
+            >p{color: default.$sub; font-size: 0.75rem;}
         }//info_txt
 
         .all_clear{
-            margin-top: 50px;
+            font-size: 0.75rem;
+            position: absolute;
+            bottom: 20px; right: 10px;
             padding: 5px 10px;
             color: default.$mainC;
             border: 1px solid default.$mainC;
@@ -290,11 +321,13 @@
     }//info
 
     .select_cover{
-        padding: 30px 15px;
-        .select_topping img{width: 80%; margin: 5px auto 0;}
+        padding: 0 10px;
+
+        
+
 
         .select{
-            margin-bottom: 30px;
+            height: 160px;
 
             input[type=radio],input[type=checkbox]{display: none;}
 
@@ -302,24 +335,25 @@
             >ul{
                 display: flex;
                 li{
-                    width: calc(100%/6);
-                    height: 190px;
+                    width: 100px; height: 110px;
                     box-sizing: border-box;
                     position: relative;
-                    padding: 10px 10px 0;
+                    margin-right: 10px;
+                    &:last-child{margin-right: 0;}
 
-                    svg{font-size: 90px; margin-top: 15px;}
+                    svg{font-size: 40px; margin: 10px 0 11px;}
 
                     label{
                         width: 100%; height: 100%;
                         padding: 10px 20px;
                         background-color: #fff;
-                        border: 5px solid #fff;
+                        border: 2px solid #fff;
                         border-radius: 5px;
 
+                        font-size: 0.75rem;
                         &.checked{
                             color: default.$mainActive;
-                            border: 5px solid default.$mainActive;
+                            border: 2px solid default.$mainActive;
                         }
                         
                     }
@@ -327,23 +361,20 @@
                 p{
                     text-align: center;
                     font-family: default.$payb;
-                    &:last-child{
-                        position: absolute;
-                        left: 0;bottom: 10px;
-                        width: 100%;
-                    }
                 }//p
             }//ul
-        }//select
-    }////select_cover
+        }}//select
+
+        .select_center{
+            display: flex;
+            >div:nth-child(1){margin-right: 50px;}
+        }
+            
 
 
     .item_total{
-        position: absolute;
-        bottom: 0;
         padding: 20px 0px;
-        width: 100%; height: 440px;
-        border-radius: 10px 10px  0 0;
+        width: 390px; height: 680px;
         background-color: default.$mainC;    
         
         h2{

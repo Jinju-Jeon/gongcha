@@ -5,8 +5,8 @@
     font-weight: normal;
     font-style: normal;
 }
-html{font-size: 20px;}
-body{font-size: 20px;font-family: 'Noto Sans KR'; color: #333;}
+html{font-size: 16px;}
+body{font-size: 16px;font-family: 'Noto Sans KR'; color: #333;}
 
 $payb: 'paybooc-Bold';
 
@@ -35,13 +35,13 @@ button{
 }
 
 
-.App{width: 1080px; height: 1920px; background-color: $bg; position: relative; margin: 0 auto;}
+.App{width: 1280px; height: 720px; background-color: $bg; position: relative; margin: 0 auto; background-color: #ddd;}
 
 
 .container{
-    width: 1080px;
+    width: 1280px;
     position: relative;
-    .row{width: 1080px;}
+    .row{width: 1280px;}
     .col{padding: 0 5px;}
 }
 
