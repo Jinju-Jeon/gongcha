@@ -42,19 +42,22 @@ $bg: #fdf8f2;
 
 .Home{
     display: flex;
+    justify-content: end;
     .carousel{
-        width: 720px;
+        width: 920px;
 
         .carousel-item{
+            width: 920px;
             transition: .3s;
-
-            >div{width: 720px;}
+            
+            img{width: 920px;}
 
             &:nth-child(1){background: #fefad4;}
             &:nth-child(2){background: linear-gradient(90deg,#f2c627,#d9c242,#91a83c);}
             &:nth-child(3){background: #e5dcca;}
             &:nth-child(4){background: #211a14;}
         }
+        
         
         .carousel-control-prev,.carousel-control-next{
             
@@ -75,9 +78,10 @@ $bg: #fdf8f2;
 
     .logo{
         position: relative;
-        width: 560px;
-        background-color: $bg;
+        width: 360px;
         padding-top: 150px;
+        background-color: $sub;
+        height: 720px;
 
         img{
             width: 300px;
@@ -89,18 +93,19 @@ $bg: #fdf8f2;
 
 
             margin: 0 auto;
-            background-color: $mainC;
+            background-color: #fff;
             border: none;
             
             &:hover,&.btn:active,:not(&.btn-check)+&.btn:active,&.btn:focus-visible{
-                background-color: $mainActive;
+                background-color: #fff;
             }
         
             span{
                 display: block; margin: 5px 3px; padding: 10px 30px;
                 font-size: 28px;
-                border: 2px dashed #fff;
-                font-family: 'paybooc-Bold';
+                border: 2px dashed $mainC;
+                font-family: $payb;
+                color: $mainC;
         
                 svg{margin-left: 20px; margin-bottom: -5px;}
             }
