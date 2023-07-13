@@ -245,7 +245,7 @@ export default function Editpage() {
                         onClick={(e)=>(sugarAction(e))}
                       >
                       <input type="radio" name={'sugarOpt'} id={'sugar_'+opt} value={opt}></input>
-                        <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.png'}></img>
+                        <img src={process.env.PUBLIC_URL + '/img/sugar_'+opt+'.svg'}></img>
                         <p>{opt}%</p>
                         </label>
                     </li>
@@ -266,7 +266,7 @@ export default function Editpage() {
                     onClick={(e)=>{iceAction(e)}}
                   >
                   <input type="radio" name={'iceOpt'} id={'ice_'+opt} value={opt} ></input>
-                    <img src={process.env.PUBLIC_URL + '/img/ice_'+opt+'.png'}></img>
+                    <img src={process.env.PUBLIC_URL + '/img/ice_'+opt+'.svg'}></img>
                     <p>{iceTxt[opt]}</p>
                     </label>
                 </li>
